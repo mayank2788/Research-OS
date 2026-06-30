@@ -1,0 +1,112 @@
+{
+  "researcher": {
+    "name": "Dr Mayank Bajpai",
+    "role": "Researcher, Academic and Finance Professional"
+  },
+  "research_domains": {
+    "Finance": [
+      "Debt Management",
+      "Green Financing",
+      "International Finance & Financing",
+      "Corporate Treasury",
+      "Financial Management",
+      "Capital Markets"
+    ],
+    "Accounting_Taxation_Compliance": [
+      "Accounting",
+      "Taxation",
+      "Regulatory Compliance"
+    ],
+    "Technology_Finance": [
+      "FinTech",
+      "Artificial Intelligence in Finance"
+    ]
+  },
+  "literature_sources": [
+    "Consensus",
+    "OpenAlex",
+    "Crossref",
+    "Semantic Scholar"
+  ],
+  "institutional_sources": {
+    "central_banking_and_regulators": [
+      {
+        "name": "Reserve Bank of India",
+        "short_name": "RBI"
+      },
+      {
+        "name": "Securities and Exchange Board of India",
+        "short_name": "SEBI"
+      }
+    ],
+    "government_and_policy": [
+      {
+        "name": "NITI Aayog",
+        "short_name": "NITI Aayog"
+      },
+      {
+        "name": "Ministry of Finance",
+        "short_name": "MoF"
+      },
+      {
+        "name": "Ministry of Corporate Affairs",
+        "short_name": "MCA"
+      },
+      {
+        "name": "Ministry of Statistics and Programme Implementation",
+        "short_name": "MOSPI"
+      }
+    ],
+    "professional_bodies": [
+      {
+        "name": "Institute of Chartered Accountants of India",
+        "short_name": "ICAI"
+      },
+      {
+        "name": "Institute of Cost Accountants of India",
+        "short_name": "ICMAI"
+      },
+      {
+        "name": "Institute of Company Secretaries of India",
+        "short_name": "ICSI"
+      }
+    ],
+    "international_institutions": [
+      {
+        "name": "International Monetary Fund",
+        "short_name": "IMF"
+      },
+      {
+        "name": "World Bank",
+        "short_name": "World Bank"
+      },
+      {
+        "name": "Organisation for Economic Co-operation and Development",
+        "short_name": "OECD"
+      },
+      {
+        "name": "Bank for International Settlements",
+        "short_name": "BIS"
+      }
+    ]
+  },
+  "data_sources": [
+    "CMIE Data",
+    "RBI Database on Indian Economy",
+    "NSE",
+    "BSE",
+    "World Development Indicators"
+  ],
+  "document_types": [
+    "Journal Articles",
+    "Working Papers",
+    "Policy Reports",
+    "Government Reports",
+    "Committee Reports",
+    "Annual Reports",
+    "Datasets",
+    "Books",
+    "Thesis Material",
+    "Research Notes"
+  ]
+}

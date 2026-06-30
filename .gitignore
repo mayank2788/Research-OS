@@ -1,0 +1,37 @@
+# ==========================
+# AROS Git Ignore Rules
+# ==========================
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables
+.env
+
+# Local generated reports
+logs/
+reports/
+
+# Extracted text
+extracted_text/
+
+# Local databases
+*.db
+
+# Temporary files
+*.tmp
+*.log
