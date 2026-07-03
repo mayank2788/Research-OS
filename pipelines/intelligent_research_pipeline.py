@@ -60,6 +60,15 @@ def run_intelligent_research_pipeline(
         print("Secondary Matches:", evaluation["secondary_matches"])
 
         if evaluation["relevance_score"] >= minimum_score:
+            paper.ai_summary = (
+                "AROS Research Evaluation\\n"
+                f"Score: {evaluation['relevance_score']}\\n"
+                f"Label: {evaluation['relevance_label']}\\n"
+                f"Primary Matches: {evaluation['primary_matches']}\\n"
+                f"Secondary Matches: {evaluation['secondary_matches']}\\n"
+                f"Score Breakdown: {evaluation['score_breakdown']}"
+            )
+            paper.status = "evaluated"
             record_id = add_knowledge_object(paper)
             saved_count += 1
             print(f"Saved to repository: YES | Record ID: {record_id}")
