@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "base_folder": "Research_Output",
+  "output_types": [
+    "Research_Papers",
+    "Books",
+    "Book_Chapters",
+    "Conference_Papers",
+    "Investigator_Projects",
+    "Patents"
+  ],
+  "stages": [
+    "Researched_Library",
+    "Working",
+    "Final"
+  ],
+  "project_subfolders": [
+    "01_Sources",
+    "02_Notes",
+    "03_Matrix",
+    "04_Gap_Analysis",
+    "05_Data",
+    "06_Drafts",
+    "07_Review",
+    "08_Submission"
+  ]
+}
