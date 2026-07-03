@@ -4,7 +4,7 @@ Date: 02 July 2026
 
 ## Current Git Baseline
 
-8f6a1f0 Add AI handoff and project status docs
+5eb694b Add OpenAlex academic connector
 
 ## Current Stage
 
@@ -50,6 +50,6 @@ Plan → Inspect → Understand → Document → Implement → Test → Verify �
 
 ## Next Recommended Objective
 
-Build the first real academic research connector while preserving:
+First real academic connector completed (OpenAlex). Next objective: improve connector intelligence while preserving:
 
 Source → Connector → Knowledge Object → Repository

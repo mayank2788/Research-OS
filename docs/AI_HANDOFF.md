@@ -26,7 +26,7 @@ Future AI Layer
 
 ## Current Verified Baseline
 
-8f6a1f0 Add AI handoff and project status docs
+5eb694b Add OpenAlex academic connector
 
 ## Latest Completed Milestone
 
@@ -54,7 +54,7 @@ Do not rely only on memory inside ChatGPT, Claude or Gemini.
 
 ## Next Objective
 
-Create the first real academic research connector and integrate it into the existing Knowledge Object and Repository flow.
+OpenAlex academic connector verified. Next objective is connector intelligence improvement while preserving the Knowledge Object and Repository flow.
 
 Do not over-engineer.
 Do not rewrite verified modules.
