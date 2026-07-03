@@ -11,8 +11,6 @@ class ResearchIntentFilter:
         text = " ".join([
             paper.title or "",
             paper.abstract or "",
-            paper.research_domain or "",
-            " ".join(paper.keywords or []),
         ]).lower()
 
         must_have = intent.get("must_have", [])

@@ -4,6 +4,9 @@ from pathlib import Path
 from connectors.discovery_engine import AROSDiscoveryEngine
 from project_workspace.pdf_library_manager import PDFLibraryManager
 from research_intelligence.relevance_engine import AROSResearchRelevanceEngine
+from research_intelligence.quality_filter import ResearchQualityFilter
+from research_intelligence.research_intent_filter import ResearchIntentFilter
+from project_workspace.pdf_resolver import PDFResolver
 
 
 class LiteratureCollector:
@@ -11,6 +14,9 @@ class LiteratureCollector:
         self.discovery = AROSDiscoveryEngine()
         self.pdf_manager = PDFLibraryManager()
         self.relevance_engine = AROSResearchRelevanceEngine()
+        self.quality_filter = ResearchQualityFilter()
+        self.intent_filter = ResearchIntentFilter()
+        self.pdf_resolver = PDFResolver()
 
     def collect(
         self,
@@ -29,15 +35,71 @@ class LiteratureCollector:
 
         evaluated = []
 
+        
+        intent = {
+            "must_have": [
+                "ias 23",
+                "borrowing costs",
+                "ifrs"
+            ],
+
+            "preferred": [
+                "earnings management",
+                "financial reporting quality",
+                "capitalization",
+                "capitalisation"
+            ],
+
+            "exclude": [
+                "financial literacy",
+                "financial inclusion",
+                "fintech"
+            ]
+        }
+
+        topic_terms = (
+            intent["must_have"]
+            + intent["preferred"]
+        )
+
+
         for paper in papers:
-            evaluation = self.relevance_engine.evaluate(paper)
-            evaluated.append({
-                "paper": paper,
-                "evaluation": evaluation
-            })
+
+            intent_result = self.intent_filter.score(
+                paper,
+                intent
+            )
+
+
+            if intent_result["decision"] == "Reject":
+                continue
+
+
+            quality = self.quality_filter.score(
+                paper,
+                topic_terms=topic_terms
+            )
+
+            if quality["recommended_action"] == "Exclude from core literature":
+                continue
+
+
+            evaluation = self.relevance_engine.evaluate(
+                paper
+            )
+
+
+            evaluated.append(
+                {
+                    "paper": paper,
+                    "evaluation": evaluation,
+                    "quality": quality,
+                }
+            )
+
 
         evaluated.sort(
-            key=lambda x: x["evaluation"]["relevance_score"],
+            key=lambda x: x["quality"]["quality_score"],
             reverse=True
         )
 
@@ -50,7 +112,12 @@ class LiteratureCollector:
 
             paper = item["paper"]
 
-            if not paper.pdf_link:
+            if item["quality"]["recommended_action"] == "Save as institutional evidence":
+                continue
+
+            resolved_url = self.pdf_resolver.resolve(paper)
+
+            if not resolved_url:
                 continue
 
             attempted += 1
@@ -58,7 +125,7 @@ class LiteratureCollector:
             try:
 
                 saved_path = self.pdf_manager.download_pdf(
-                    url=paper.pdf_link,
+                    url=resolved_url,
                     output_type=output_type,
                     project_id=project_id,
                     domain=domain,
