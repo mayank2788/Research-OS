@@ -32,7 +32,7 @@ class ResearchNoveltyEngine:
         return 4
 
     def score_methodology(self, text):
-        if "machine learning" in text or "ai" in text:
+        if "machine learning" in text or "ai" in text or "advanced analytical" in text:
             return 8
         if "panel" in text or "sem" in text or "pls" in text:
             return 6
@@ -49,7 +49,7 @@ class ResearchNoveltyEngine:
         return min(9, 4 + count)
 
     def score_interdisciplinary(self, text):
-        areas = ["finance", "accounting", "governance", "policy", "management", "ai"]
+        areas = ["finance", "accounting", "governance", "corporate governance", "policy", "economics", "management", "methodology", "interdisciplinary", "ai"]
         count = sum(1 for area in areas if area in text)
         return min(10, 3 + count)
 
