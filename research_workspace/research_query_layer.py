@@ -22,6 +22,26 @@ class AROSResearchWorkspace:
     def connect(self):
         return sqlite3.connect(DB_FILE)
 
+
+    def remove_duplicates(self, rows):
+        """
+        Remove duplicate research outputs.
+
+        Uses title as primary uniqueness key.
+        Keeps first/highest ranked occurrence.
+        """
+
+        unique = {}
+        
+        for row in rows:
+            title = row[0].lower().strip()
+
+            if title not in unique:
+                unique[title] = row
+
+        return list(unique.values())
+
+
     def highest_relevance_papers(self, limit=10):
         conn = self.connect()
         cursor = conn.cursor()
@@ -36,7 +56,7 @@ class AROSResearchWorkspace:
         rows = cursor.fetchall()
         conn.close()
 
-        return rows
+        return self.remove_duplicates(rows)
 
 
     def search_domain(self, keyword):
@@ -60,7 +80,7 @@ class AROSResearchWorkspace:
         rows = cursor.fetchall()
         conn.close()
 
-        return rows
+        return self.remove_duplicates(rows)
 
 
     def papers_above_score(self, score):
@@ -84,4 +104,4 @@ class AROSResearchWorkspace:
 
         results = self.search_domain(topic)
 
-        return results[:limit]
+        return self.remove_duplicates(results)[:limit]
