@@ -1,0 +1,28 @@
+from connectors.openalex.openalex_connector import OpenAlexConnector
+from research_intelligence.relevance_engine import AROSResearchRelevanceEngine
+
+
+print("=" * 70)
+print("AROS RESEARCH RELEVANCE ENGINE TEST")
+print("=" * 70)
+
+
+connector = OpenAlexConnector()
+
+papers = connector.search(
+    "corporate finance debt management",
+    max_results=5
+)
+
+engine = AROSResearchRelevanceEngine()
+
+for paper in papers:
+    result = engine.evaluate(paper)
+
+    print()
+    print("Title:", result["title"])
+    print("Score:", result["relevance_score"])
+    print("Matched:", result["matched_terms"])
+
+print()
+print("✓ AROS Research Relevance Engine operational.")
