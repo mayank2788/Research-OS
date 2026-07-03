@@ -85,7 +85,7 @@
       "category": "Economics and Finance Research",
       "integration_role": "knowledge_source",
       "connector_type": "metadata",
-      "implementation_status": "planned",
+      "implementation_status": "connector_ready",
       "enabled": false,
       "requires_api_key": false,
       "priority": "high"
@@ -96,7 +96,7 @@
       "category": "Social Science Research",
       "integration_role": "knowledge_source",
       "connector_type": "restricted_or_web",
-      "implementation_status": "planned",
+      "implementation_status": "connector_ready",
       "enabled": false,
       "requires_api_key": true,
       "priority": "high"
@@ -129,7 +129,7 @@
       "category": "Reference Management",
       "integration_role": "reference_manager",
       "connector_type": "api_export_import",
-      "implementation_status": "planned",
+      "implementation_status": "connector_ready",
       "enabled": false,
       "requires_api_key": true,
       "priority": "high"
