@@ -1,7 +1,6 @@
 {
   "schema_version": "2.0",
   "description": "AROS Master Integration Registry for research sources, reference tools, analysis engines, writing tools and knowledge workspaces",
-
   "integrations": [
     {
       "id": "openalex",
@@ -233,6 +232,50 @@
       "enabled": false,
       "requires_api_key": true,
       "priority": "medium"
+    },
+    {
+      "id": "deepl_write",
+      "name": "DeepL Write",
+      "category": "Academic Language Enhancement",
+      "integration_role": "manuscript_quality_engine",
+      "connector_type": "api_or_export",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": true,
+      "priority": "low"
+    },
+    {
+      "id": "quillbot",
+      "name": "QuillBot",
+      "category": "Writing Assistance",
+      "integration_role": "manuscript_quality_engine",
+      "connector_type": "api_or_export",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": true,
+      "priority": "low"
+    },
+    {
+      "id": "undetectable_ai",
+      "name": "Undetectable AI",
+      "category": "AI Writing Review",
+      "integration_role": "manuscript_quality_engine",
+      "connector_type": "external_service",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": true,
+      "priority": "low"
+    },
+    {
+      "id": "ithenticate",
+      "name": "iThenticate",
+      "category": "Research Integrity",
+      "integration_role": "manuscript_quality_engine",
+      "connector_type": "institutional_api",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": true,
+      "priority": "low"
     }
   ]
 }
