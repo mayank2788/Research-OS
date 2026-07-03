@@ -1,13 +1,19 @@
+import json
+from pathlib import Path
+
 from connectors.openalex.openalex_connector import OpenAlexConnector
 from connectors.crossref.crossref_connector import CrossrefConnector
+from connectors.institutional.institutional_connector import InstitutionalConnector
 
 
 class AROSDiscoveryEngine:
     """
     Multi-source discovery engine.
 
-    Version 1:
-    - Searches OpenAlex and Crossref
+    Version 2:
+    - Searches OpenAlex
+    - Searches Crossref
+    - Searches institutional source registry
     - Combines Knowledge Objects
     - Deduplicates by DOI first, title second
     """
@@ -17,6 +23,26 @@ class AROSDiscoveryEngine:
             OpenAlexConnector(),
             CrossrefConnector(),
         ]
+
+        self.connectors.extend(
+            self.load_institutional_connectors()
+        )
+
+    def load_institutional_connectors(self):
+        registry = Path(
+            "connectors/institutional/institution_registry.json"
+        )
+
+        data = json.loads(registry.read_text())
+
+        connectors = []
+
+        for item in data["institutions"]:
+            connectors.append(
+                InstitutionalConnector(item["short_name"])
+            )
+
+        return connectors
 
     def deduplicate(self, results):
         unique = {}

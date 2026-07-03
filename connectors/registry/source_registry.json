@@ -1,0 +1,238 @@
+{
+  "schema_version": "2.0",
+  "description": "AROS Master Integration Registry for research sources, reference tools, analysis engines, writing tools and knowledge workspaces",
+
+  "integrations": [
+    {
+      "id": "openalex",
+      "name": "OpenAlex",
+      "category": "Academic Literature",
+      "integration_role": "knowledge_source",
+      "connector_type": "api",
+      "implementation_status": "active",
+      "enabled": true,
+      "requires_api_key": false,
+      "priority": "high"
+    },
+    {
+      "id": "crossref",
+      "name": "Crossref",
+      "category": "Academic Literature",
+      "integration_role": "knowledge_source",
+      "connector_type": "api",
+      "implementation_status": "active",
+      "enabled": true,
+      "requires_api_key": false,
+      "priority": "high"
+    },
+    {
+      "id": "institutional_registry",
+      "name": "Institutional Source Registry",
+      "category": "Policy, Regulation and Institutional Sources",
+      "integration_role": "knowledge_source",
+      "connector_type": "registry",
+      "implementation_status": "active",
+      "enabled": true,
+      "requires_api_key": false,
+      "priority": "high"
+    },
+    {
+      "id": "semantic_scholar",
+      "name": "Semantic Scholar",
+      "category": "Academic Literature",
+      "integration_role": "knowledge_source",
+      "connector_type": "api",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": false,
+      "priority": "high"
+    },
+    {
+      "id": "core",
+      "name": "CORE",
+      "category": "Open Access Literature",
+      "integration_role": "knowledge_source",
+      "connector_type": "api",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": true,
+      "priority": "high"
+    },
+    {
+      "id": "doaj",
+      "name": "DOAJ",
+      "category": "Open Access Journals",
+      "integration_role": "knowledge_source",
+      "connector_type": "api",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": false,
+      "priority": "medium"
+    },
+    {
+      "id": "arxiv",
+      "name": "arXiv",
+      "category": "Preprint Repository",
+      "integration_role": "knowledge_source",
+      "connector_type": "api",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": false,
+      "priority": "medium"
+    },
+    {
+      "id": "repec",
+      "name": "RePEc",
+      "category": "Economics and Finance Research",
+      "integration_role": "knowledge_source",
+      "connector_type": "metadata",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": false,
+      "priority": "high"
+    },
+    {
+      "id": "ssrn",
+      "name": "SSRN",
+      "category": "Social Science Research",
+      "integration_role": "knowledge_source",
+      "connector_type": "restricted_or_web",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": true,
+      "priority": "high"
+    },
+    {
+      "id": "consensus",
+      "name": "Consensus",
+      "category": "AI Research Discovery",
+      "integration_role": "knowledge_source",
+      "connector_type": "premium_api",
+      "implementation_status": "api_required",
+      "enabled": false,
+      "requires_api_key": true,
+      "priority": "high"
+    },
+    {
+      "id": "scispace",
+      "name": "SciSpace",
+      "category": "AI Research Assistant",
+      "integration_role": "knowledge_source",
+      "connector_type": "premium_api",
+      "implementation_status": "api_required",
+      "enabled": false,
+      "requires_api_key": true,
+      "priority": "medium"
+    },
+    {
+      "id": "zotero",
+      "name": "Zotero",
+      "category": "Reference Management",
+      "integration_role": "reference_manager",
+      "connector_type": "api_export_import",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": true,
+      "priority": "high"
+    },
+    {
+      "id": "notebooklm",
+      "name": "NotebookLM",
+      "category": "Knowledge Workspace",
+      "integration_role": "knowledge_workspace",
+      "connector_type": "export",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": false,
+      "priority": "medium"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "category": "Knowledge Workspace",
+      "integration_role": "knowledge_workspace",
+      "connector_type": "api_export",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": true,
+      "priority": "medium"
+    },
+    {
+      "id": "covidence",
+      "name": "Covidence",
+      "category": "Systematic Review",
+      "integration_role": "review_system",
+      "connector_type": "export_import",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": true,
+      "priority": "medium"
+    },
+    {
+      "id": "rstudio",
+      "name": "RStudio",
+      "category": "Statistical Analysis",
+      "integration_role": "analysis_engine",
+      "connector_type": "local_environment",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": false,
+      "priority": "high"
+    },
+    {
+      "id": "stata",
+      "name": "Stata",
+      "category": "Econometrics",
+      "integration_role": "analysis_engine",
+      "connector_type": "local_environment",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": false,
+      "priority": "high"
+    },
+    {
+      "id": "spss",
+      "name": "IBM SPSS Statistics",
+      "category": "Statistical Analysis",
+      "integration_role": "analysis_engine",
+      "connector_type": "local_environment",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": false,
+      "priority": "medium"
+    },
+    {
+      "id": "smartpls",
+      "name": "SmartPLS",
+      "category": "Structural Equation Modeling",
+      "integration_role": "analysis_engine",
+      "connector_type": "local_environment",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": false,
+      "priority": "medium"
+    },
+    {
+      "id": "jamovi",
+      "name": "jamovi",
+      "category": "Statistical Analysis",
+      "integration_role": "analysis_engine",
+      "connector_type": "local_environment",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": false,
+      "priority": "medium"
+    },
+    {
+      "id": "paperpal",
+      "name": "Paperpal",
+      "category": "Academic Writing",
+      "integration_role": "writing_engine",
+      "connector_type": "premium_api_or_export",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": true,
+      "priority": "medium"
+    }
+  ]
+}
