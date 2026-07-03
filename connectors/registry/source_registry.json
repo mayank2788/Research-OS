@@ -41,9 +41,9 @@
       "category": "Academic Literature",
       "integration_role": "knowledge_source",
       "connector_type": "api",
-      "implementation_status": "planned",
+      "implementation_status": "connector_ready",
       "enabled": false,
-      "requires_api_key": false,
+      "requires_api_key": true,
       "priority": "high"
     },
     {
