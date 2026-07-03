@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0",
+  "description": "AROS Research Domain Registry defining academic knowledge universe",
+
+  "domains": [
+
+    {
+      "id": "finance",
+      "name": "Finance",
+      "priority": "core",
+      "areas": [
+        "Corporate Finance",
+        "Capital Structure",
+        "Debt Management",
+        "Working Capital Management",
+        "Project Finance",
+        "Infrastructure Finance",
+        "Energy Finance",
+        "Green Finance",
+        "Sustainable Finance",
+        "ESG Finance",
+        "Climate Finance",
+        "Risk Management",
+        "Financial Markets"
+      ],
+
+      "theories": [
+        "Modigliani Miller Theory",
+        "Trade Off Theory",
+        "Pecking Order Theory",
+        "Agency Theory",
+        "Market Timing Theory"
+      ]
+    },
+
+
+    {
+      "id": "accounting",
+      "name": "Accounting and Reporting",
+      "priority": "core",
+
+      "areas": [
+        "Financial Accounting",
+        "Management Accounting",
+        "Cost Management",
+        "Corporate Reporting",
+        "IFRS",
+        "Ind AS",
+        "Earnings Management",
+        "Audit Quality",
+        "Disclosure Quality",
+        "Integrated Reporting"
+      ],
+
+      "theories": [
+        "Positive Accounting Theory",
+        "Agency Theory",
+        "Stakeholder Theory"
+      ]
+    },
+
+
+    {
+      "id": "corporate_governance",
+      "name": "Corporate Governance",
+
+      "priority": "core",
+
+      "areas": [
+        "Board Structure",
+        "Ownership Structure",
+        "Executive Compensation",
+        "Governance Mechanisms",
+        "Public Sector Governance",
+        "Corporate Social Responsibility",
+        "ESG Governance"
+      ],
+
+      "theories": [
+        "Agency Theory",
+        "Stewardship Theory",
+        "Stakeholder Theory",
+        "Resource Dependency Theory"
+      ]
+    },
+
+
+    {
+      "id": "economics_policy",
+
+      "name": "Economics and Public Policy",
+
+      "priority": "core",
+
+      "areas": [
+        "Development Economics",
+        "Energy Economics",
+        "Infrastructure Policy",
+        "Public Finance",
+        "Monetary Policy",
+        "Industrial Policy",
+        "Sustainable Development"
+      ]
+    },
+
+
+    {
+      "id": "management",
+
+      "name": "Management",
+
+      "priority": "supporting",
+
+      "areas": [
+        "Strategic Management",
+        "Leadership",
+        "Organisational Performance",
+        "Decision Making",
+        "Innovation Management",
+        "Knowledge Management"
+      ]
+    },
+
+
+    {
+      "id": "research_methodology",
+
+      "name": "Research Methodology",
+
+      "priority": "core",
+
+      "areas": [
+        "Systematic Literature Review",
+        "Bibliometric Analysis",
+        "Meta Analysis",
+        "Regression Models",
+        "Panel Data Analysis",
+        "Structural Equation Modeling",
+        "PLS SEM",
+        "Machine Learning Methods",
+        "Mixed Methods Research"
+      ],
+
+      "tools": [
+        "R",
+        "Python",
+        "Stata",
+        "SPSS",
+        "SmartPLS",
+        "jamovi"
+      ]
+    },
+
+
+    {
+      "id": "ai_research",
+
+      "name": "AI Enabled Research",
+
+      "priority": "future",
+
+      "areas": [
+        "AI Assisted Research",
+        "Research Automation",
+        "Knowledge Graphs",
+        "Large Language Models",
+        "AI in Finance",
+        "AI in Governance"
+      ]
+    }
+
+  ]
+}
