@@ -35,3 +35,6 @@ extracted_text/
 # Temporary files
 *.tmp
 *.log
+# AROS generated research outputs
+Research_Output/
+
