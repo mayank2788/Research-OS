@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+from research_intelligence.theory_engine import TheoryIntelligenceEngine
+
 
 class ResearchIntelligenceExtractor:
     """
@@ -19,6 +21,7 @@ class ResearchIntelligenceExtractor:
     def __init__(self, domain_registry_path="research_domains/domain_registry.json"):
         self.domain_registry_path = Path(domain_registry_path)
         self.domain_registry = self.load_domain_registry()
+        self.theory_engine = TheoryIntelligenceEngine()
 
     def load_domain_registry(self):
         with open(self.domain_registry_path, "r", encoding="utf-8") as file:
@@ -85,6 +88,10 @@ class ResearchIntelligenceExtractor:
             for theory in domain.get("theories", []):
                 if theory.lower() in text:
                     detected.append(theory)
+
+        detected.extend(
+            self.theory_engine.detect(text)
+        )
 
         return sorted(set(detected))
 
