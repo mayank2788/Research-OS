@@ -46,6 +46,8 @@ class ArxivConnector(BaseConnector):
             published = published_node.text if published_node is not None and published_node.text else ""
             year = published[:4] if published else ""
             link = id_node.text if id_node is not None and id_node.text else ""
+            if "arxiv.org/abs/" in link:
+                link = link.replace("arxiv.org/abs/", "arxiv.org/pdf/") + ".pdf"
 
             authors = []
             for author in entry.findall("atom:author", ns):
