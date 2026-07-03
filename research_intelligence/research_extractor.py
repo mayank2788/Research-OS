@@ -56,6 +56,10 @@ class ResearchIntelligenceExtractor:
             domain_score = 0
             matched_areas = []
 
+            if domain["name"].lower() in text:
+                domain_score += 1
+                matched_areas.append(domain["name"])
+
             for area in domain.get("areas", []):
                 if area.lower() in text:
                     domain_score += 1
