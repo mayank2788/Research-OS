@@ -1,61 +1,30 @@
-import json
-from pathlib import Path
-
-from connectors.openalex.openalex_connector import OpenAlexConnector
-from connectors.crossref.crossref_connector import CrossrefConnector
-from connectors.institutional.institutional_connector import InstitutionalConnector
+from connectors.registry.connector_loader import AROSConnectorLoader
 
 
 class AROSDiscoveryEngine:
     """
-    Multi-source discovery engine.
+    Registry driven multi-source discovery engine.
 
-    Version 2:
-    - Searches OpenAlex
-    - Searches Crossref
-    - Searches institutional source registry
-    - Combines Knowledge Objects
-    - Deduplicates by DOI first, title second
+    Version 3:
+    - No hard coded connectors
+    - Loads enabled integrations
+    - Supports future expansion
     """
 
     def __init__(self):
-        self.connectors = [
-            OpenAlexConnector(),
-            CrossrefConnector(),
-        ]
-
-        self.connectors.extend(
-            self.load_institutional_connectors()
-        )
-
-    def load_institutional_connectors(self):
-        registry = Path(
-            "connectors/institutional/institution_registry.json"
-        )
-
-        data = json.loads(registry.read_text())
-
-        connectors = []
-
-        for item in data["institutions"]:
-            connectors.append(
-                InstitutionalConnector(item["short_name"])
-            )
-
-        return connectors
+        loader = AROSConnectorLoader()
+        self.connectors = loader.load_enabled_connectors()
 
     def deduplicate(self, results):
         unique = {}
 
         for item in results:
-            key = ""
-
             if item.doi:
-                key = f"doi:{item.doi.lower().strip()}"
+                key = "doi:" + item.doi.lower().strip()
             else:
-                key = f"title:{item.title.lower().strip()}"
+                key = "title:" + item.title.lower().strip()
 
-            if key and key not in unique:
+            if key not in unique:
                 unique[key] = item
 
         return list(unique.values())
@@ -71,7 +40,6 @@ class AROSDiscoveryEngine:
                     query=query,
                     max_results=max_results_per_source,
                 )
-
                 combined.extend(results)
 
             except Exception as error:
