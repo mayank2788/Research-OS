@@ -4,6 +4,8 @@ from pathlib import Path
 from connectors.openalex.openalex_connector import OpenAlexConnector
 from connectors.crossref.crossref_connector import CrossrefConnector
 from connectors.institutional.institutional_connector import InstitutionalConnector
+from connectors.doaj.doaj_connector import DOAJConnector
+from connectors.arxiv.arxiv_connector import ArxivConnector
 
 
 class AROSConnectorLoader:
@@ -57,6 +59,20 @@ class AROSConnectorLoader:
 
                 connectors.append(
                     CrossrefConnector()
+                )
+
+
+            elif item["id"] == "doaj":
+
+                connectors.append(
+                    DOAJConnector()
+                )
+
+
+            elif item["id"] == "arxiv":
+
+                connectors.append(
+                    ArxivConnector()
                 )
 
 

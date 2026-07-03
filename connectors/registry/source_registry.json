@@ -52,7 +52,7 @@
       "category": "Open Access Literature",
       "integration_role": "knowledge_source",
       "connector_type": "api",
-      "implementation_status": "planned",
+      "implementation_status": "connector_ready",
       "enabled": false,
       "requires_api_key": true,
       "priority": "high"
@@ -63,8 +63,8 @@
       "category": "Open Access Journals",
       "integration_role": "knowledge_source",
       "connector_type": "api",
-      "implementation_status": "planned",
-      "enabled": false,
+      "implementation_status": "active",
+      "enabled": true,
       "requires_api_key": false,
       "priority": "medium"
     },
@@ -74,8 +74,8 @@
       "category": "Preprint Repository",
       "integration_role": "knowledge_source",
       "connector_type": "api",
-      "implementation_status": "planned",
-      "enabled": false,
+      "implementation_status": "active",
+      "enabled": true,
       "requires_api_key": false,
       "priority": "medium"
     },
