@@ -4,7 +4,7 @@ This file allows ChatGPT, Claude, Gemini, Cursor or any future AI assistant to r
 
 ## Project
 
-AROS — AI Research Operating Syse
+AROS — AI Research Operating System
 
 AROS is an AI-native research platform for academic research, finance, economics, public policy, corporate governance and knowledge management.
 
@@ -26,7 +26,7 @@ Future AI Layer
 
 ## Current Verified Baseline
 
-980a4c6 Add first live research pipeline
+8f6a1f0 Add AI handoff and project status docs
 
 ## Latest Completed Milestone
 

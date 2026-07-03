@@ -4,7 +4,7 @@ Date: 02 July 2026
 
 ## Current Git Baseline
 
-980a4c6 Add first live research pipeline
+8f6a1f0 Add AI handoff and project status docs
 
 ## Current Stage
 
@@ -46,7 +46,7 @@ AN_APPROACH_TO_PERFORMANCE_OF_MFI_USING.pdf
 
 One objective at a time.
 
-Plan → Inspect → Understand → Document →  → rify → Update Docs → Commit → Push
+Plan → Inspect → Understand → Document → Implement → Test → Verify → Update Docs → Commit → Push
 
 ## Next Recommended Objective
 
