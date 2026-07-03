@@ -1,0 +1,229 @@
+{
+  "schema_version": "1.0",
+  "description": "AROS Institutional Source Registry for Finance, Accounting, Governance, Economics, Policy and Energy Research",
+
+  "institutions": [
+
+    {
+      "name": "Reserve Bank of India",
+      "short_name": "RBI",
+      "category": "Central Bank",
+      "region": "India",
+      "source_type": "Regulations, Reports, Monetary Data, Financial Statistics",
+      "priority": "High",
+      "url": "https://www.rbi.org.in"
+    },
+
+    {
+      "name": "Securities and Exchange Board of India",
+      "short_name": "SEBI",
+      "category": "Financial Regulator",
+      "region": "India",
+      "source_type": "Regulations, Corporate Governance, Capital Market Reports",
+      "priority": "High",
+      "url": "https://www.sebi.gov.in"
+    },
+
+    {
+      "name": "Ministry of Corporate Affairs",
+      "short_name": "MCA",
+      "category": "Government",
+      "region": "India",
+      "source_type": "Company Law, Corporate Filings, Governance",
+      "priority": "High",
+      "url": "https://www.mca.gov.in"
+    },
+
+    {
+      "name": "Ministry of Finance India",
+      "short_name": "MoF",
+      "category": "Government",
+      "region": "India",
+      "source_type": "Budget, Economic Policy, Financial Reports",
+      "priority": "High",
+      "url": "https://finmin.gov.in"
+    },
+
+    {
+      "name": "NITI Aayog",
+      "short_name": "NITI",
+      "category": "Policy Think Tank",
+      "region": "India",
+      "source_type": "Policy Papers, Development Reports",
+      "priority": "High",
+      "url": "https://www.niti.gov.in"
+    },
+
+    {
+      "name": "Ministry of Statistics and Programme Implementation",
+      "short_name": "MOSPI",
+      "category": "Statistics",
+      "region": "India",
+      "source_type": "Economic Data",
+      "priority": "High",
+      "url": "https://www.mospi.gov.in"
+    },
+
+    {
+      "name": "Institute of Chartered Accountants of India",
+      "short_name": "ICAI",
+      "category": "Accounting Body",
+      "region": "India",
+      "source_type": "Accounting Standards, Guidance Notes",
+      "priority": "High",
+      "url": "https://www.icai.org"
+    },
+
+    {
+      "name": "Institute of Cost Accountants of India",
+      "short_name": "ICMAI",
+      "category": "Accounting Body",
+      "region": "India",
+      "source_type": "Cost Accounting Standards",
+      "priority": "High",
+      "url": "https://icmai.in"
+    },
+
+    {
+      "name": "Institute of Company Secretaries of India",
+      "short_name": "ICSI",
+      "category": "Governance Body",
+      "region": "India",
+      "source_type": "Corporate Governance, Compliance",
+      "priority": "High",
+      "url": "https://www.icsi.edu"
+    },
+
+    {
+      "name": "National Financial Reporting Authority",
+      "short_name": "NFRA",
+      "category": "Accounting Regulator",
+      "region": "India",
+      "source_type": "Audit Regulation",
+      "priority": "High",
+      "url": "https://nfra.gov.in"
+    },
+
+
+    {
+      "name": "Power Finance Corporation",
+      "short_name": "PFC",
+      "category": "Power Finance",
+      "region": "India",
+      "source_type": "Annual Reports, Power Finance Data",
+      "priority": "High",
+      "url": "https://pfcindia.com"
+    },
+
+    {
+      "name": "REC Limited",
+      "short_name": "REC",
+      "category": "Power Finance",
+      "region": "India",
+      "source_type": "Annual Reports, Infrastructure Finance",
+      "priority": "High",
+      "url": "https://recindia.nic.in"
+    },
+
+    {
+      "name": "NTPC Limited",
+      "short_name": "NTPC",
+      "category": "Power Company",
+      "region": "India",
+      "source_type": "Annual Reports, Financial Statements",
+      "priority": "High",
+      "url": "https://www.ntpc.co.in"
+    },
+
+    {
+      "name": "NHPC Limited",
+      "short_name": "NHPC",
+      "category": "Power Company",
+      "region": "India",
+      "source_type": "Annual Reports, Financial Statements",
+      "priority": "High",
+      "url": "https://www.nhpcindia.com"
+    },
+
+    {
+      "name": "THDC India Limited",
+      "short_name": "THDC",
+      "category": "Power Company",
+      "region": "India",
+      "source_type": "Annual Reports, Financial Statements",
+      "priority": "High",
+      "url": "https://www.thdc.co.in"
+    },
+
+
+    {
+      "name": "World Bank",
+      "short_name": "WorldBank",
+      "category": "Multilateral Institution",
+      "region": "Global",
+      "source_type": "Research Papers, Development Data",
+      "priority": "High",
+      "url": "https://www.worldbank.org"
+    },
+
+    {
+      "name": "International Monetary Fund",
+      "short_name": "IMF",
+      "category": "Multilateral Institution",
+      "region": "Global",
+      "source_type": "Working Papers, Economic Data",
+      "priority": "High",
+      "url": "https://www.imf.org"
+    },
+
+    {
+      "name": "Asian Development Bank",
+      "short_name": "ADB",
+      "category": "Development Institution",
+      "region": "Asia",
+      "source_type": "Reports, Economic Research",
+      "priority": "High",
+      "url": "https://www.adb.org"
+    },
+
+    {
+      "name": "Organisation for Economic Cooperation and Development",
+      "short_name": "OECD",
+      "category": "International Organisation",
+      "region": "Global",
+      "source_type": "Research, Policy Data",
+      "priority": "High",
+      "url": "https://www.oecd.org"
+    },
+
+    {
+      "name": "Bank for International Settlements",
+      "short_name": "BIS",
+      "category": "Banking Institution",
+      "region": "Global",
+      "source_type": "Banking Research",
+      "priority": "High",
+      "url": "https://www.bis.org"
+    },
+
+    {
+      "name": "CRISIL Ratings",
+      "short_name": "CRISIL",
+      "category": "Credit Rating Agency",
+      "region": "India",
+      "source_type": "Ratings, Credit Research",
+      "priority": "High",
+      "url": "https://www.crisilratings.com"
+    },
+
+    {
+      "name": "ICRA Limited",
+      "short_name": "ICRA",
+      "category": "Credit Rating Agency",
+      "region": "India",
+      "source_type": "Ratings, Credit Research",
+      "priority": "High",
+      "url": "https://www.icra.in"
+    }
+  ]
+}
