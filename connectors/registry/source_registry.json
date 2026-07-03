@@ -276,6 +276,17 @@
       "enabled": false,
       "requires_api_key": true,
       "priority": "low"
+    },
+    {
+      "id": "editage",
+      "name": "Editage",
+      "category": "Academic Manuscript Support",
+      "integration_role": "manuscript_quality_engine",
+      "connector_type": "premium_api_or_export",
+      "implementation_status": "planned",
+      "enabled": false,
+      "requires_api_key": true,
+      "priority": "high"
     }
   ]
 }
