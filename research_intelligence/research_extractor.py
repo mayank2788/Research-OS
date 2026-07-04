@@ -55,25 +55,77 @@ class ResearchIntelligenceExtractor:
     def detect_domains(self, text):
         matched = []
 
+        domain_boosters = {
+
+            "Finance": [
+                "borrowing cost",
+                "borrowing costs",
+                "capitalisation",
+                "capitalization",
+                "financing",
+                "investment",
+                "debt"
+            ],
+
+            "Accounting and Reporting": [
+                "earnings management",
+                "financial reporting",
+                "ifrs",
+                "ind as",
+                "accounting standard"
+            ]
+        }
+
+
         for domain in self.domain_registry.get("domains", []):
+
             domain_score = 0
             matched_areas = []
 
-            if domain["name"].lower() in text:
+
+            # avoid false positive:
+            # earnings management != management domain
+
+            if (
+                domain["name"].lower() in text
+                and domain["name"] != "Management"
+            ):
+
                 domain_score += 1
                 matched_areas.append(domain["name"])
 
+
             for area in domain.get("areas", []):
+
                 if area.lower() in text:
+
                     domain_score += 1
                     matched_areas.append(area)
 
+
+            for keyword in domain_boosters.get(
+                domain["name"],
+                []
+            ):
+
+                if keyword in text:
+
+                    domain_score += 2
+                    matched_areas.append(keyword)
+
+
             if domain_score > 0:
-                matched.append({
-                    "domain": domain["name"],
-                    "score": domain_score,
-                    "matched_areas": matched_areas,
-                })
+
+                matched.append(
+                    {
+                        "domain": domain["name"],
+                        "score": domain_score,
+                        "matched_areas": sorted(
+                            set(matched_areas)
+                        ),
+                    }
+                )
+
 
         return sorted(
             matched,
