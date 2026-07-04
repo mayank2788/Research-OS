@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "description": "Frozen AROS Journal Domain Classification",
+
+  "domains": {
+    "Finance": [
+      "finance",
+      "corporate finance",
+      "capital structure",
+      "debt",
+      "banking",
+      "financial markets",
+      "investment",
+      "green finance",
+      "sustainable finance"
+    ],
+
+    "Accounting": [
+      "accounting",
+      "financial reporting",
+      "ifrs",
+      "ind as",
+      "earnings management",
+      "disclosure",
+      "audit",
+      "auditing"
+    ],
+
+    "Corporate Governance": [
+      "corporate governance",
+      "board",
+      "ownership",
+      "esg governance",
+      "regulatory governance"
+    ],
+
+    "Economics": [
+      "economics",
+      "econometrics",
+      "development economics",
+      "energy economics",
+      "industrial economics"
+    ],
+
+    "Management": [
+      "management",
+      "strategy",
+      "strategic management",
+      "organisation",
+      "organization",
+      "innovation",
+      "operations management"
+    ],
+
+    "Public Policy": [
+      "public policy",
+      "government policy",
+      "regulation",
+      "public administration",
+      "institutional"
+    ],
+
+    "Sustainability / ESG": [
+      "sustainability",
+      "esg",
+      "csr",
+      "climate",
+      "environmental management"
+    ],
+
+    "Energy & Infrastructure": [
+      "energy",
+      "power",
+      "renewable energy",
+      "utilities",
+      "infrastructure"
+    ],
+
+    "Taxation": [
+      "tax",
+      "taxation",
+      "corporate tax",
+      "international tax",
+      "tax policy"
+    ],
+
+    "Research Methodology": [
+      "methodology",
+      "statistics",
+      "quantitative",
+      "bibliometric",
+      "systematic literature review",
+      "meta analysis"
+    ],
+
+    "Artificial Intelligence & Data Science": [
+      "artificial intelligence",
+      "machine learning",
+      "analytics",
+      "data science",
+      "decision science"
+    ],
+
+    "Interdisciplinary / Multidisciplinary Research": [
+      "interdisciplinary",
+      "multidisciplinary",
+      "social sciences",
+      "business technology",
+      "science technology society"
+    ]
+  }
+}
