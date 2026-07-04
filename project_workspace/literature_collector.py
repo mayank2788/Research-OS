@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 from connectors.discovery_engine import AROSDiscoveryEngine
-from project_workspace.pdf_acquisition_engine import PDFAcquisitionEngine
+from project_workspace.knowledge_preservation_engine import KnowledgePreservationEngine
 from research_intelligence.relevance_engine import AROSResearchRelevanceEngine
 from research_intelligence.quality_filter import ResearchQualityFilter
 from research_intelligence.research_intent_filter import ResearchIntentFilter
@@ -12,7 +12,7 @@ from project_workspace.pdf_resolver import PDFResolver
 class LiteratureCollector:
     def __init__(self):
         self.discovery = AROSDiscoveryEngine()
-        self.acquisition_engine = PDFAcquisitionEngine()
+        self.knowledge_engine = KnowledgePreservationEngine()
         self.relevance_engine = AROSResearchRelevanceEngine()
         self.quality_filter = ResearchQualityFilter()
         self.intent_filter = ResearchIntentFilter()
@@ -124,7 +124,7 @@ class LiteratureCollector:
 
             try:
 
-                acquisition = self.acquisition_engine.acquire(
+                knowledge = self.knowledge_engine.preserve(
                     paper=paper,
                     output_type=output_type,
                     project_id=project_id,
@@ -134,7 +134,7 @@ class LiteratureCollector:
 
 
                 saved.append(
-                    acquisition
+                    knowledge
                 )
 
 
@@ -160,13 +160,13 @@ class LiteratureCollector:
             "pdfs_saved": len(
                 [
                     x for x in saved
-                    if x.get("status") == "PDF Saved"
+                    if x.get("pdf_or_metadata", {}).get("status") == "PDF Saved"
                 ]
             ),
             "metadata_saved": len(
                 [
                     x for x in saved
-                    if x.get("status") == "Metadata Saved"
+                    if x.get("pdf_or_metadata", {}).get("status") == "Metadata Saved"
                 ]
             ),
             "saved_files": saved,

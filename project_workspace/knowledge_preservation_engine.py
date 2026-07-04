@@ -1,4 +1,5 @@
 import json
+import hashlib
 from pathlib import Path
 
 from docx import Document
@@ -40,14 +41,16 @@ class KnowledgePreservationEngine:
         paper,
         output_type,
         project_id,
-        domain
+        domain,
+        impact_factor="NA"
     ):
 
         acquisition = self.pdf_engine.acquire(
             paper=paper,
             output_type=output_type,
             project_id=project_id,
-            domain=domain
+            domain=domain,
+            impact_factor=impact_factor
         )
 
 
@@ -88,11 +91,28 @@ class KnowledgePreservationEngine:
         )
 
 
-        filename = (
-            paper.title[:80]
+        unique_text = (
+            (paper.doi or "")
+            + (paper.title or "")
+            + (paper.source or "")
+            + (paper.publication_year or "")
+        )
+
+        unique_id = hashlib.md5(
+            unique_text.encode("utf-8")
+        ).hexdigest()[:8]
+
+        clean_title = (
+            (paper.title or "untitled")[:60]
             .replace("/", "_")
             .replace(" ", "_")
-            + ".docx"
+        )
+
+        filename = (
+            f"{paper.publication_year or 'Year_NA'}_"
+            f"{paper.source or 'Source_NA'}_"
+            f"{clean_title}_"
+            f"{unique_id}.docx"
         )
 
 
