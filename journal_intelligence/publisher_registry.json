@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+
+  "publishers": [
+
+    {
+      "name": "Elsevier",
+      "platform": "ScienceDirect",
+      "domains": [
+        "Finance",
+        "Accounting",
+        "Economics",
+        "Management"
+      ]
+    },
+
+
+    {
+      "name": "Springer Nature",
+      "domains": [
+        "Management",
+        "Economics",
+        "AI Research"
+      ]
+    },
+
+
+    {
+      "name": "Sage",
+      "domains": [
+        "Management",
+        "Social Sciences"
+      ]
+    },
+
+
+    {
+      "name": "Emerald",
+      "domains": [
+        "Finance",
+        "Accounting",
+        "Management"
+      ]
+    },
+
+
+    {
+      "name": "Taylor and Francis",
+      "domains": [
+        "Economics",
+        "Policy",
+        "Management"
+      ]
+    }
+  ]
+}

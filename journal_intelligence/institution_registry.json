@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+
+  "purpose": "AROS Academic Institution Intelligence Registry",
+
+  "categories": {
+
+    "Global_Universities": [],
+
+    "Indian_Central_Universities": [],
+
+    "Indian_State_Universities": [],
+
+    "Indian_IIMs": [],
+
+    "Indian_IITs": [],
+
+    "Indian_Technical_Universities": [],
+
+    "Indian_AICTE_Management_Institutes": []
+
+  }
+}
