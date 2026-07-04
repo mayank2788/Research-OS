@@ -1,9 +1,7 @@
 {
   "schema_version": "1.0",
   "description": "AROS Research Domain Registry defining academic knowledge universe",
-
   "domains": [
-
     {
       "id": "finance",
       "name": "Finance",
@@ -23,7 +21,6 @@
         "Risk Management",
         "Financial Markets"
       ],
-
       "theories": [
         "Modigliani Miller Theory",
         "Trade Off Theory",
@@ -32,13 +29,10 @@
         "Market Timing Theory"
       ]
     },
-
-
     {
       "id": "accounting",
       "name": "Accounting and Reporting",
       "priority": "core",
-
       "areas": [
         "Financial Accounting",
         "Management Accounting",
@@ -51,21 +45,16 @@
         "Disclosure Quality",
         "Integrated Reporting"
       ],
-
       "theories": [
         "Positive Accounting Theory",
         "Agency Theory",
         "Stakeholder Theory"
       ]
     },
-
-
     {
       "id": "corporate_governance",
       "name": "Corporate Governance",
-
       "priority": "core",
-
       "areas": [
         "Board Structure",
         "Ownership Structure",
@@ -75,7 +64,6 @@
         "Corporate Social Responsibility",
         "ESG Governance"
       ],
-
       "theories": [
         "Agency Theory",
         "Stewardship Theory",
@@ -83,15 +71,39 @@
         "Resource Dependency Theory"
       ]
     },
-
-
+    {
+      "id": "taxation",
+      "name": "Taxation",
+      "priority": "core",
+      "areas": [
+        "Corporate Taxation",
+        "Direct Tax",
+        "Indirect Tax",
+        "GST",
+        "International Taxation",
+        "Transfer Pricing",
+        "Tax Planning",
+        "Tax Avoidance",
+        "Tax Compliance",
+        "Tax Governance",
+        "Tax Transparency",
+        "Deferred Tax",
+        "Tax Accounting",
+        "Tax Policy",
+        "Taxation and Investment Decisions",
+        "Taxation and Capital Structure"
+      ],
+      "theories": [
+        "Agency Theory",
+        "Stakeholder Theory",
+        "Institutional Theory",
+        "Tax Planning Theory"
+      ]
+    },
     {
       "id": "economics_policy",
-
       "name": "Economics and Public Policy",
-
       "priority": "core",
-
       "areas": [
         "Development Economics",
         "Energy Economics",
@@ -102,15 +114,10 @@
         "Sustainable Development"
       ]
     },
-
-
     {
       "id": "management",
-
       "name": "Management",
-
       "priority": "supporting",
-
       "areas": [
         "Strategic Management",
         "Leadership",
@@ -120,15 +127,10 @@
         "Knowledge Management"
       ]
     },
-
-
     {
       "id": "research_methodology",
-
       "name": "Research Methodology",
-
       "priority": "core",
-
       "areas": [
         "Systematic Literature Review",
         "Bibliometric Analysis",
@@ -140,7 +142,6 @@
         "Machine Learning Methods",
         "Mixed Methods Research"
       ],
-
       "tools": [
         "R",
         "Python",
@@ -150,15 +151,10 @@
         "jamovi"
       ]
     },
-
-
     {
       "id": "ai_research",
-
       "name": "AI Enabled Research",
-
       "priority": "future",
-
       "areas": [
         "AI Assisted Research",
         "Research Automation",
@@ -168,6 +164,5 @@
         "AI in Governance"
       ]
     }
-
   ]
 }
