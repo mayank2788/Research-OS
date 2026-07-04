@@ -287,6 +287,17 @@
       "enabled": false,
       "requires_api_key": true,
       "priority": "high"
+    },
+    {
+      "id": "accounting_standards",
+      "name": "Accounting Standards Connector",
+      "category": "Accounting Standards and Regulation",
+      "integration_role": "knowledge_source",
+      "connector_type": "curated_source",
+      "implementation_status": "active",
+      "enabled": true,
+      "requires_api_key": false,
+      "priority": "high"
     }
   ]
 }

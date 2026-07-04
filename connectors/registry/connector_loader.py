@@ -6,6 +6,7 @@ from connectors.crossref.crossref_connector import CrossrefConnector
 from connectors.institutional.institutional_connector import InstitutionalConnector
 from connectors.doaj.doaj_connector import DOAJConnector
 from connectors.arxiv.arxiv_connector import ArxivConnector
+from connectors.accounting import AccountingStandardsConnector
 
 
 class AROSConnectorLoader:
@@ -73,6 +74,13 @@ class AROSConnectorLoader:
 
                 connectors.append(
                     ArxivConnector()
+                )
+
+
+            elif item["id"] == "accounting_standards":
+
+                connectors.append(
+                    AccountingStandardsConnector()
                 )
 
 
