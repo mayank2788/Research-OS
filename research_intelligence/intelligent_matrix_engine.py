@@ -8,6 +8,10 @@ from research_intelligence.research_extractor import (
     ResearchIntelligenceExtractor
 )
 
+from research_intelligence.paper_understanding_engine import (
+    PaperUnderstandingEngine
+)
+
 
 class IntelligentMatrixEngine:
     """
@@ -19,6 +23,8 @@ class IntelligentMatrixEngine:
 
     def __init__(self):
         self.extractor = ResearchIntelligenceExtractor()
+
+        self.paper_engine = PaperUnderstandingEngine()
 
 
     def build(
@@ -64,6 +70,8 @@ class IntelligentMatrixEngine:
                 "Methodology",
                 "Research Type",
                 "Dataset",
+                "Statistical Models",
+                "Contribution",
                 "Findings",
                 "Limitations",
                 "Future Scope"
@@ -93,6 +101,10 @@ class IntelligentMatrixEngine:
 
             intelligence = (
                 self.extractor.extract(obj)
+            )
+
+            understanding = (
+                self.paper_engine.understand(obj)
             )
 
 
@@ -132,21 +144,29 @@ class IntelligentMatrixEngine:
                         "possible_research_type"
                     ],
 
-                    intelligence[
-                        "dataset"
-                    ],
+                    ", ".join(
+                        understanding["dataset"]
+                    ),
+
+                    ", ".join(
+                        understanding["statistical_models"]
+                    ),
+
+                    ", ".join(
+                        understanding["contribution"]
+                    ),
 
                     intelligence[
                         "findings"
                     ],
 
-                    intelligence[
-                        "limitations"
-                    ],
+                    ", ".join(
+                        understanding["limitations"]
+                    ),
 
-                    intelligence[
-                        "future_scope"
-                    ]
+                    ", ".join(
+                        understanding["future_scope"]
+                    )
                 ]
             )
 
