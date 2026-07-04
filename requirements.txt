@@ -2,3 +2,4 @@ pypdf
 requests
 python-dotenv
 python-docx
+openpyxl
