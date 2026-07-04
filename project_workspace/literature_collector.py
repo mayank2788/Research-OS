@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 from connectors.discovery_engine import AROSDiscoveryEngine
-from project_workspace.pdf_library_manager import PDFLibraryManager
+from project_workspace.pdf_acquisition_engine import PDFAcquisitionEngine
 from research_intelligence.relevance_engine import AROSResearchRelevanceEngine
 from research_intelligence.quality_filter import ResearchQualityFilter
 from research_intelligence.research_intent_filter import ResearchIntentFilter
@@ -12,7 +12,7 @@ from project_workspace.pdf_resolver import PDFResolver
 class LiteratureCollector:
     def __init__(self):
         self.discovery = AROSDiscoveryEngine()
-        self.pdf_manager = PDFLibraryManager()
+        self.acquisition_engine = PDFAcquisitionEngine()
         self.relevance_engine = AROSResearchRelevanceEngine()
         self.quality_filter = ResearchQualityFilter()
         self.intent_filter = ResearchIntentFilter()
@@ -124,26 +124,18 @@ class LiteratureCollector:
 
             try:
 
-                saved_path = self.pdf_manager.download_pdf(
-                    url=resolved_url,
+                acquisition = self.acquisition_engine.acquire(
+                    paper=paper,
                     output_type=output_type,
                     project_id=project_id,
                     domain=domain,
-                    year=paper.publication_year or "Year_NA",
-                    title=paper.title,
-                    impact_factor=impact_factor,
-                    metadata={
-                        "source": paper.source,
-                        "doi": paper.doi,
-                        "authors": paper.authors,
-                        "query": query,
-                        "relevance": item["evaluation"]
-                    }
+                    impact_factor=impact_factor
                 )
 
 
-                if saved_path:
-                    saved.append(str(saved_path))
+                saved.append(
+                    acquisition
+                )
 
 
             except Exception as error:
@@ -164,7 +156,19 @@ class LiteratureCollector:
             "query": query,
             "total_discovered": len(papers),
             "download_attempts": attempted,
-            "pdfs_saved": len(saved),
+            "items_preserved": len(saved),
+            "pdfs_saved": len(
+                [
+                    x for x in saved
+                    if x.get("status") == "PDF Saved"
+                ]
+            ),
+            "metadata_saved": len(
+                [
+                    x for x in saved
+                    if x.get("status") == "Metadata Saved"
+                ]
+            ),
             "saved_files": saved,
         }
 
