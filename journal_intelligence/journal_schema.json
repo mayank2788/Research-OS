@@ -1,0 +1,39 @@
+{
+  "schema_version": "3.0",
+  "primary_key": "issn_or_eissn",
+  "fields": {
+    "journal_name": "",
+    "issn": "",
+    "eissn": "",
+    "publisher": "",
+    "country": "",
+    "source_registry": [],
+    "aros_domains": [],
+    "subject_categories": [],
+    "ranking": {
+      "sjr_quartile": "",
+      "sjr_score": "",
+      "jcr_quartile": "",
+      "impact_factor": "",
+      "abdc_rating": "",
+      "abs_ajg_rating": "",
+      "ugc_care_status": ""
+    },
+    "access": {
+      "access_type": "",
+      "doaj_listed": false,
+      "apc": "",
+      "license": ""
+    },
+    "urls": {
+      "journal_url": "",
+      "source_url": "",
+      "submission_url": ""
+    },
+    "verification": {
+      "verified_year": "",
+      "last_updated": "",
+      "notes": ""
+    }
+  }
+}

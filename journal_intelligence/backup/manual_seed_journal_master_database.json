@@ -1,0 +1,893 @@
+{
+  "schema_version": "1.0",
+  "purpose": "AROS Journal Master Database for source quality, access and domain intelligence",
+  "journals": [
+    {
+      "journal_name": "Journal of Finance",
+      "publisher": "Wiley",
+      "institution": "American Finance Association",
+      "country": "USA",
+      "domains": [
+        "Finance",
+        "Corporate Finance",
+        "Financial Markets"
+      ],
+      "ranking_tags": [
+        "FT50",
+        "ABDC A*",
+        "ABS/AJG 4*",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": "https://afajof.org/journal-of-finance/"
+    },
+    {
+      "journal_name": "Journal of Financial Economics",
+      "publisher": "Elsevier",
+      "institution": "",
+      "country": "Netherlands",
+      "domains": [
+        "Finance",
+        "Corporate Finance",
+        "Capital Markets"
+      ],
+      "ranking_tags": [
+        "FT50",
+        "ABDC A*",
+        "ABS/AJG 4*",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": "https://www.sciencedirect.com/journal/journal-of-financial-economics"
+    },
+    {
+      "journal_name": "Review of Financial Studies",
+      "publisher": "Oxford University Press",
+      "institution": "Society for Financial Studies",
+      "country": "USA",
+      "domains": [
+        "Finance",
+        "Corporate Finance",
+        "Financial Markets"
+      ],
+      "ranking_tags": [
+        "FT50",
+        "ABDC A*",
+        "ABS/AJG 4*",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": "https://academic.oup.com/rfs"
+    },
+    {
+      "journal_name": "The Accounting Review",
+      "publisher": "American Accounting Association",
+      "institution": "American Accounting Association",
+      "country": "USA",
+      "domains": [
+        "Accounting and Reporting",
+        "Audit",
+        "Financial Reporting"
+      ],
+      "ranking_tags": [
+        "FT50",
+        "ABDC A*",
+        "ABS/AJG 4*",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": "https://publications.aaahq.org/accounting-review"
+    },
+    {
+      "journal_name": "Journal of Accounting Research",
+      "publisher": "Wiley",
+      "institution": "University of Chicago Booth School of Business",
+      "country": "USA",
+      "domains": [
+        "Accounting and Reporting",
+        "Financial Reporting",
+        "Disclosure"
+      ],
+      "ranking_tags": [
+        "FT50",
+        "ABDC A*",
+        "ABS/AJG 4*",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": "https://onlinelibrary.wiley.com/journal/1475679x"
+    },
+    {
+      "journal_name": "Journal of Accounting and Economics",
+      "publisher": "Elsevier",
+      "institution": "",
+      "country": "Netherlands",
+      "domains": [
+        "Accounting and Reporting",
+        "Financial Reporting",
+        "Corporate Finance"
+      ],
+      "ranking_tags": [
+        "FT50",
+        "ABDC A*",
+        "ABS/AJG 4*",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": "https://www.sciencedirect.com/journal/journal-of-accounting-and-economics"
+    },
+    {
+      "journal_name": "Management Science",
+      "publisher": "INFORMS",
+      "institution": "INFORMS",
+      "country": "USA",
+      "domains": [
+        "Management",
+        "Finance",
+        "Operations",
+        "Decision Making"
+      ],
+      "ranking_tags": [
+        "FT50",
+        "ABDC A*",
+        "ABS/AJG 4*",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": "https://pubsonline.informs.org/journal/mnsc"
+    },
+    {
+      "journal_name": "Strategic Management Journal",
+      "publisher": "Wiley",
+      "institution": "Strategic Management Society",
+      "country": "USA",
+      "domains": [
+        "Management",
+        "Strategy",
+        "Corporate Governance"
+      ],
+      "ranking_tags": [
+        "FT50",
+        "ABDC A*",
+        "ABS/AJG 4*",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": "https://onlinelibrary.wiley.com/journal/10970266"
+    },
+    {
+      "journal_name": "Academy of Management Journal",
+      "publisher": "Academy of Management",
+      "institution": "Academy of Management",
+      "country": "USA",
+      "domains": [
+        "Management",
+        "Organisation Studies",
+        "Leadership"
+      ],
+      "ranking_tags": [
+        "FT50",
+        "ABDC A*",
+        "ABS/AJG 4*",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": "https://journals.aom.org/journal/amj"
+    },
+    {
+      "journal_name": "Corporate Governance: An International Review",
+      "publisher": "Wiley",
+      "institution": "",
+      "country": "UK",
+      "domains": [
+        "Corporate Governance",
+        "Board Governance",
+        "Ownership Structure"
+      ],
+      "ranking_tags": [
+        "ABDC",
+        "ABS/AJG",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": "https://onlinelibrary.wiley.com/journal/14678683"
+    },
+    {
+      "journal_name": "Journal of Corporate Finance",
+      "publisher": "Elsevier",
+      "institution": "",
+      "country": "Netherlands",
+      "domains": [
+        "Finance",
+        "Corporate Finance",
+        "Governance"
+      ],
+      "ranking_tags": [
+        "ABDC A*",
+        "ABS/AJG",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": "https://www.sciencedirect.com/journal/journal-of-corporate-finance"
+    },
+    {
+      "journal_name": "Emerging Markets Review",
+      "publisher": "Elsevier",
+      "institution": "",
+      "country": "Netherlands",
+      "domains": [
+        "Finance",
+        "Emerging Markets",
+        "Economics"
+      ],
+      "ranking_tags": [
+        "ABDC",
+        "ABS/AJG",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": "https://www.sciencedirect.com/journal/emerging-markets-review"
+    },
+    {
+      "journal_name": "Pacific-Basin Finance Journal",
+      "publisher": "Elsevier",
+      "institution": "",
+      "country": "Netherlands",
+      "domains": [
+        "Finance",
+        "Asia-Pacific Finance",
+        "Capital Markets"
+      ],
+      "ranking_tags": [
+        "ABDC",
+        "Scopus"
+      ],
+      "access_type": "limited",
+      "url": "https://www.sciencedirect.com/journal/pacific-basin-finance-journal"
+    },
+    {
+      "journal_name": "Journal of Banking and Finance",
+      "publisher": "Elsevier",
+      "institution": "",
+      "country": "Netherlands",
+      "domains": [
+        "Finance",
+        "Banking",
+        "Financial Institutions"
+      ],
+      "ranking_tags": [
+        "ABDC A",
+        "ABS/AJG",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": "https://www.sciencedirect.com/journal/journal-of-banking-and-finance"
+    },
+    {
+      "journal_name": "Accounting Forum",
+      "publisher": "Taylor and Francis",
+      "institution": "",
+      "country": "UK",
+      "domains": [
+        "Accounting and Reporting",
+        "Accounting Standards",
+        "Disclosure"
+      ],
+      "ranking_tags": [
+        "ABDC",
+        "Scopus"
+      ],
+      "access_type": "limited",
+      "url": "https://www.tandfonline.com/journals/racc20"
+    },
+    {
+      "journal_name": "Accounting Research Journal",
+      "publisher": "Emerald",
+      "institution": "",
+      "country": "UK",
+      "domains": [
+        "Accounting and Reporting",
+        "Audit",
+        "Financial Reporting"
+      ],
+      "ranking_tags": [
+        "Scopus"
+      ],
+      "access_type": "limited",
+      "url": "https://www.emeraldgrouppublishing.com/journal/arj"
+    },
+    {
+      "journal_name": "Managerial Finance",
+      "publisher": "Emerald",
+      "institution": "",
+      "country": "UK",
+      "domains": [
+        "Finance",
+        "Corporate Finance",
+        "Management"
+      ],
+      "ranking_tags": [
+        "Scopus"
+      ],
+      "access_type": "limited",
+      "url": "https://www.emeraldgrouppublishing.com/journal/mf"
+    },
+    {
+      "journal_name": "International Journal of Managerial Finance",
+      "publisher": "Emerald",
+      "institution": "",
+      "country": "UK",
+      "domains": [
+        "Finance",
+        "Corporate Finance",
+        "Management"
+      ],
+      "ranking_tags": [
+        "Scopus"
+      ],
+      "access_type": "limited",
+      "url": "https://www.emeraldgrouppublishing.com/journal/ijmf"
+    },
+    {
+      "journal_name": "IIMB Management Review",
+      "publisher": "Elsevier",
+      "institution": "Indian Institute of Management Bangalore",
+      "country": "India",
+      "domains": [
+        "Management",
+        "Finance",
+        "Strategy",
+        "Public Policy"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Indian Institutional Journal"
+      ],
+      "access_type": "hybrid",
+      "url": "https://www.sciencedirect.com/journal/iimb-management-review"
+    },
+    {
+      "journal_name": "Vikalpa",
+      "publisher": "Sage",
+      "institution": "Indian Institute of Management Ahmedabad",
+      "country": "India",
+      "domains": [
+        "Management",
+        "Finance",
+        "Strategy",
+        "Public Policy"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Indian Institutional Journal"
+      ],
+      "access_type": "limited",
+      "url": "https://journals.sagepub.com/home/vik"
+    },
+    {
+      "journal_name": "Vision: The Journal of Business Perspective",
+      "publisher": "Sage",
+      "institution": "Management Development Institute Gurgaon",
+      "country": "India",
+      "domains": [
+        "Management",
+        "Finance",
+        "Marketing",
+        "Strategy"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Indian Institutional Journal"
+      ],
+      "access_type": "limited",
+      "url": "https://journals.sagepub.com/home/vis"
+    },
+    {
+      "journal_name": "Decision",
+      "publisher": "Springer",
+      "institution": "Indian Institute of Management Calcutta",
+      "country": "India",
+      "domains": [
+        "Management",
+        "Finance",
+        "Economics",
+        "Decision Making"
+      ],
+      "ranking_tags": [
+        "Indian Institutional Journal"
+      ],
+      "access_type": "limited",
+      "url": "https://www.springer.com/journal/40622"
+    },
+    {
+      "journal_name": "IIM Kozhikode Society & Management Review",
+      "publisher": "Sage",
+      "institution": "Indian Institute of Management Kozhikode",
+      "country": "India",
+      "domains": [
+        "Management",
+        "Society",
+        "Policy",
+        "Governance"
+      ],
+      "ranking_tags": [
+        "Indian Institutional Journal"
+      ],
+      "access_type": "limited",
+      "url": "https://journals.sagepub.com/home/ksm"
+    },
+    {
+      "journal_name": "Journal of Emerging Market Finance",
+      "publisher": "Sage",
+      "institution": "",
+      "country": "India",
+      "domains": [
+        "Finance",
+        "Emerging Markets",
+        "Capital Markets"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Indian Journal"
+      ],
+      "access_type": "limited",
+      "url": "https://journals.sagepub.com/home/emf"
+    },
+    {
+      "journal_name": "South Asian Journal of Business and Management Cases",
+      "publisher": "Sage",
+      "institution": "Birla Institute of Management Technology",
+      "country": "India",
+      "domains": [
+        "Management",
+        "Case Research",
+        "Strategy"
+      ],
+      "ranking_tags": [
+        "Indian Institutional Journal"
+      ],
+      "access_type": "limited",
+      "url": "https://journals.sagepub.com/home/bmc"
+    },
+    {
+      "journal_name": "Global Business Review",
+      "publisher": "Sage",
+      "institution": "",
+      "country": "India",
+      "domains": [
+        "Management",
+        "Finance",
+        "Economics",
+        "International Business"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Indian Journal"
+      ],
+      "access_type": "limited",
+      "url": "https://journals.sagepub.com/home/gbr"
+    },
+    {
+      "journal_name": "Journal of Risk and Financial Management",
+      "publisher": "MDPI",
+      "institution": "",
+      "country": "Switzerland",
+      "domains": [
+        "Finance",
+        "Risk Management",
+        "Corporate Finance"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "DOAJ",
+        "Open Access"
+      ],
+      "access_type": "open",
+      "url": "https://www.mdpi.com/journal/jrfm"
+    },
+    {
+      "journal_name": "Sustainability",
+      "publisher": "MDPI",
+      "institution": "",
+      "country": "Switzerland",
+      "domains": [
+        "Sustainable Finance",
+        "ESG",
+        "Management",
+        "Policy"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "DOAJ",
+        "Open Access"
+      ],
+      "access_type": "open",
+      "url": "https://www.mdpi.com/journal/sustainability"
+    },
+    {
+      "journal_name": "Administrative Sciences",
+      "publisher": "MDPI",
+      "institution": "",
+      "country": "Switzerland",
+      "domains": [
+        "Management",
+        "Governance",
+        "Business"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Open Access"
+      ],
+      "access_type": "open",
+      "url": "https://www.mdpi.com/journal/admsci"
+    },
+    {
+      "journal_name": "Frontiers in Environmental Economics",
+      "publisher": "Frontiers",
+      "institution": "",
+      "country": "Switzerland",
+      "domains": [
+        "Economics",
+        "Sustainable Development",
+        "Policy"
+      ],
+      "ranking_tags": [
+        "Open Access"
+      ],
+      "access_type": "open",
+      "url": "https://www.frontiersin.org"
+    },
+    {
+      "journal_name": "Humanities and Social Sciences Communications",
+      "publisher": "Springer Nature",
+      "institution": "",
+      "country": "UK",
+      "domains": [
+        "Management",
+        "Social Sciences",
+        "Policy"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Open Access"
+      ],
+      "access_type": "open",
+      "url": "https://www.nature.com/palcomms/"
+    },
+    {
+      "journal_name": "Cogent Business & Management",
+      "publisher": "Taylor and Francis",
+      "institution": "",
+      "country": "UK",
+      "domains": [
+        "Business",
+        "Finance",
+        "Management"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Open Access"
+      ],
+      "access_type": "open",
+      "url": "https://www.tandfonline.com/journals/oabm20"
+    },
+    {
+      "journal_name": "Cogent Economics & Finance",
+      "publisher": "Taylor and Francis",
+      "institution": "",
+      "country": "UK",
+      "domains": [
+        "Economics",
+        "Finance"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Open Access"
+      ],
+      "access_type": "open",
+      "url": "https://www.tandfonline.com/journals/oaef20"
+    },
+    {
+      "journal_name": "SAGE Open",
+      "publisher": "Sage",
+      "institution": "",
+      "country": "USA",
+      "domains": [
+        "Management",
+        "Social Sciences"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Open Access"
+      ],
+      "access_type": "open",
+      "url": "https://journals.sagepub.com/home/sgo"
+    },
+    {
+      "journal_name": "Journal of Innovation and Entrepreneurship",
+      "publisher": "Springer Nature",
+      "institution": "",
+      "country": "Germany",
+      "domains": [
+        "Management",
+        "Innovation"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Open Access"
+      ],
+      "access_type": "open",
+      "url": "https://innovation-entrepreneurship.springeropen.com"
+    },
+    {
+      "journal_name": "Future Business Journal",
+      "publisher": "Springer Nature",
+      "institution": "",
+      "country": "Germany",
+      "domains": [
+        "Management",
+        "Finance",
+        "Economics"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Open Access"
+      ],
+      "access_type": "open",
+      "url": "https://fbj.springeropen.com"
+    },
+    {
+      "journal_name": "Review of Finance",
+      "publisher": "Oxford University Press",
+      "institution": "European Finance Association",
+      "country": "UK",
+      "domains": [
+        "Finance",
+        "Corporate Finance",
+        "Financial Markets"
+      ],
+      "ranking_tags": [
+        "ABDC",
+        "ABS/AJG",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": ""
+    },
+    {
+      "journal_name": "Financial Management",
+      "publisher": "Wiley",
+      "institution": "Financial Management Association",
+      "country": "USA",
+      "domains": [
+        "Finance",
+        "Corporate Finance"
+      ],
+      "ranking_tags": [
+        "ABDC",
+        "Scopus"
+      ],
+      "access_type": "limited",
+      "url": ""
+    },
+    {
+      "journal_name": "Journal of Empirical Finance",
+      "publisher": "Elsevier",
+      "institution": "",
+      "country": "Netherlands",
+      "domains": [
+        "Finance",
+        "Empirical Finance"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": ""
+    },
+    {
+      "journal_name": "International Review of Financial Analysis",
+      "publisher": "Elsevier",
+      "institution": "",
+      "country": "Netherlands",
+      "domains": [
+        "Finance",
+        "Financial Analysis"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": ""
+    },
+    {
+      "journal_name": "Finance Research Letters",
+      "publisher": "Elsevier",
+      "institution": "",
+      "country": "Netherlands",
+      "domains": [
+        "Finance"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "hybrid",
+      "url": ""
+    },
+    {
+      "journal_name": "Accounting Organizations and Society",
+      "publisher": "Elsevier",
+      "institution": "",
+      "country": "UK",
+      "domains": [
+        "Accounting and Reporting"
+      ],
+      "ranking_tags": [
+        "FT50",
+        "ABDC A*",
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": ""
+    },
+    {
+      "journal_name": "Contemporary Accounting Research",
+      "publisher": "Wiley",
+      "institution": "",
+      "country": "Canada",
+      "domains": [
+        "Accounting and Reporting"
+      ],
+      "ranking_tags": [
+        "FT50",
+        "ABDC A*",
+        "Scopus"
+      ],
+      "access_type": "limited",
+      "url": ""
+    },
+    {
+      "journal_name": "Accounting Horizons",
+      "publisher": "American Accounting Association",
+      "institution": "",
+      "country": "USA",
+      "domains": [
+        "Accounting",
+        "Audit"
+      ],
+      "ranking_tags": [
+        "Scopus"
+      ],
+      "access_type": "limited",
+      "url": ""
+    },
+    {
+      "journal_name": "European Accounting Review",
+      "publisher": "Taylor and Francis",
+      "institution": "",
+      "country": "UK",
+      "domains": [
+        "Accounting"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": ""
+    },
+    {
+      "journal_name": "Academy of Management Review",
+      "publisher": "Academy of Management",
+      "institution": "",
+      "country": "USA",
+      "domains": [
+        "Management",
+        "Strategy"
+      ],
+      "ranking_tags": [
+        "FT50",
+        "ABDC A*",
+        "ABS 4*"
+      ],
+      "access_type": "limited",
+      "url": ""
+    },
+    {
+      "journal_name": "Journal of Management",
+      "publisher": "Sage",
+      "institution": "",
+      "country": "USA",
+      "domains": [
+        "Management"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Q1"
+      ],
+      "access_type": "limited",
+      "url": ""
+    },
+    {
+      "journal_name": "Organization Science",
+      "publisher": "INFORMS",
+      "institution": "",
+      "country": "USA",
+      "domains": [
+        "Management",
+        "Organisation"
+      ],
+      "ranking_tags": [
+        "FT50",
+        "Scopus"
+      ],
+      "access_type": "limited",
+      "url": ""
+    },
+    {
+      "journal_name": "Long Range Planning",
+      "publisher": "Elsevier",
+      "institution": "",
+      "country": "UK",
+      "domains": [
+        "Strategy",
+        "Management"
+      ],
+      "ranking_tags": [
+        "Scopus"
+      ],
+      "access_type": "limited",
+      "url": ""
+    },
+    {
+      "journal_name": "Journal of Open Innovation Technology Market and Complexity",
+      "publisher": "Elsevier",
+      "institution": "",
+      "country": "Netherlands",
+      "domains": [
+        "Innovation",
+        "Management"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Open Access"
+      ],
+      "access_type": "open",
+      "url": ""
+    },
+    {
+      "journal_name": "Economies",
+      "publisher": "MDPI",
+      "institution": "",
+      "country": "Switzerland",
+      "domains": [
+        "Economics",
+        "Finance"
+      ],
+      "ranking_tags": [
+        "Scopus",
+        "Open Access"
+      ],
+      "access_type": "open",
+      "url": ""
+    }
+  ]
+}
