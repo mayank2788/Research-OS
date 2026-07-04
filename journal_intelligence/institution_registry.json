@@ -1,23 +1,117 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
 
   "purpose": "AROS Academic Institution Intelligence Registry",
 
   "categories": {
 
-    "Global_Universities": [],
 
-    "Indian_Central_Universities": [],
+    "Indian_IIMs": [
 
-    "Indian_State_Universities": [],
+      "IIM Ahmedabad",
+      "IIM Bangalore",
+      "IIM Calcutta",
+      "IIM Lucknow",
+      "IIM Kozhikode",
+      "IIM Indore",
+      "IIM Shillong",
+      "IIM Udaipur",
+      "IIM Tiruchirappalli",
+      "IIM Ranchi",
+      "IIM Raipur",
+      "IIM Rohtak",
+      "IIM Kashipur",
+      "IIM Nagpur",
+      "IIM Visakhapatnam",
+      "IIM Amritsar",
+      "IIM Bodh Gaya",
+      "IIM Jammu",
+      "IIM Sambalpur",
+      "IIM Sirmaur"
+    ],
 
-    "Indian_IIMs": [],
 
-    "Indian_IITs": [],
+    "Indian_IITs_Management_Economics": [
 
-    "Indian_Technical_Universities": [],
+      "IIT Delhi - Department of Management Studies",
+      "IIT Bombay - SJMSOM",
+      "IIT Kharagpur - Vinod Gupta School of Management",
+      "IIT Madras - Department of Management Studies",
+      "IIT Kanpur - Department of Economic Sciences",
+      "IIT Roorkee - Department of Management Studies",
+      "IIT ISM Dhanbad - Management Studies"
+    ],
 
-    "Indian_AICTE_Management_Institutes": []
+
+    "Indian_Central_Universities": [
+
+      "University of Delhi",
+      "Banaras Hindu University",
+      "Jawaharlal Nehru University",
+      "Aligarh Muslim University",
+      "University of Hyderabad",
+      "Jamia Millia Islamia",
+      "Pondicherry University",
+      "Tezpur University",
+      "North Eastern Hill University"
+    ],
+
+
+    "Indian_State_Universities": [
+
+      "University of Lucknow",
+      "University of Mumbai",
+      "University of Calcutta",
+      "University of Madras",
+      "Savitribai Phule Pune University",
+      "Gujarat University",
+      "Osmania University",
+      "Bangalore University",
+      "Mangalore University"
+    ],
+
+
+    "Indian_Technical_Universities": [
+
+      "Delhi Technological University",
+      "Anna University",
+      "Jadavpur University",
+      "Visvesvaraya Technological University",
+      "APJ Abdul Kalam Technical University"
+    ],
+
+
+    "Indian_AICTE_Management_Institutes": [
+
+      "XLRI Jamshedpur",
+      "Management Development Institute Gurgaon",
+      "SPJIMR Mumbai",
+      "IMT Ghaziabad",
+      "FORE School of Management",
+      "BIMTECH Greater Noida",
+      "Jaipuria Institute of Management",
+      "School of Management Sciences",
+      "Great Lakes Institute of Management",
+      "TAPMI Manipal",
+      "KJ Somaiya Institute of Management",
+      "XIM University",
+      "Institute of Rural Management Anand"
+    ],
+
+
+    "Global_Universities": [
+
+      "Harvard University",
+      "Stanford University",
+      "MIT",
+      "University of Oxford",
+      "University of Cambridge",
+      "London School of Economics",
+      "University of Chicago",
+      "Wharton School University of Pennsylvania",
+      "INSEAD",
+      "HEC Paris"
+    ]
 
   }
 }
