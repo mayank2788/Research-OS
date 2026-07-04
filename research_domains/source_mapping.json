@@ -1,0 +1,161 @@
+{
+  "version": "AROS Research Domain Source Mapping v1.0",
+
+  "domains": {
+
+    "Finance": {
+      "sources": [
+        "OpenAlex",
+        "Crossref",
+        "Semantic Scholar",
+        "SSRN",
+        "RePEc",
+        "WorldBank",
+        "IMF",
+        "ADB",
+        "OECD",
+        "RBI",
+        "SEBI"
+      ],
+
+      "ranking_priority": [
+        "Q1 Journals",
+        "ABS/AJG Ranked Journals",
+        "ABDC Ranked Journals",
+        "Working Papers",
+        "Institutional Reports"
+      ]
+    },
+
+
+    "Accounting and Financial Reporting": {
+      "sources": [
+        "OpenAlex",
+        "Crossref",
+        "Semantic Scholar",
+        "SSRN",
+        "DOAJ",
+        "IFRS",
+        "ICAI",
+        "MCA",
+        "NFRA"
+      ],
+
+      "ranking_priority": [
+        "Q1 Accounting Journals",
+        "IFRS Publications",
+        "Professional Standards",
+        "Regulatory Documents"
+      ]
+    },
+
+
+    "Corporate Governance": {
+      "sources": [
+        "OpenAlex",
+        "Crossref",
+        "SSRN",
+        "OECD",
+        "SEBI",
+        "MCA",
+        "ICSI"
+      ],
+
+      "ranking_priority": [
+        "Q1 Governance Journals",
+        "Governance Codes",
+        "Institutional Research"
+      ]
+    },
+
+
+    "Taxation": {
+      "sources": [
+        "OpenAlex",
+        "Crossref",
+        "SSRN",
+        "RePEc",
+        "OECD",
+        "WorldBank",
+        "IMF",
+        "Government Tax Sources"
+      ],
+
+      "ranking_priority": [
+        "Q1 Tax Journals",
+        "International Tax Research",
+        "Policy Papers",
+        "Professional Guidance"
+      ]
+    },
+
+
+    "Economics and Public Policy": {
+      "sources": [
+        "OpenAlex",
+        "Crossref",
+        "RePEc",
+        "WorldBank",
+        "IMF",
+        "ADB",
+        "OECD",
+        "NITI",
+        "RBI"
+      ],
+
+      "ranking_priority": [
+        "Q1 Economics Journals",
+        "Policy Research",
+        "Institutional Reports"
+      ]
+    },
+
+
+    "Management": {
+      "sources": [
+        "OpenAlex",
+        "Crossref",
+        "Semantic Scholar",
+        "SSRN",
+        "DOAJ"
+      ],
+
+      "ranking_priority": [
+        "FT50 Journals",
+        "ABS/AJG Journals",
+        "Q1 Journals"
+      ]
+    },
+
+
+    "Research Methodology": {
+      "sources": [
+        "OpenAlex",
+        "Crossref",
+        "Semantic Scholar"
+      ],
+
+      "ranking_priority": [
+        "Methodology Journals",
+        "Statistical References"
+      ]
+    },
+
+
+    "AI Enabled Research": {
+      "sources": [
+        "arXiv",
+        "Semantic Scholar",
+        "OpenAlex",
+        "Crossref"
+      ],
+
+      "ranking_priority": [
+        "AI Journals",
+        "Conference Papers",
+        "Preprints"
+      ]
+    }
+
+  }
+}
