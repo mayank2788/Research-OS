@@ -3,6 +3,10 @@ import urllib.request
 import re
 from pathlib import Path
 
+from literature_acquisition.connectors.openalex_oa_resolver import (
+    OpenAlexOAResolver
+)
+
 
 class PDFDownloader:
 
@@ -22,6 +26,8 @@ class PDFDownloader:
         self.library = Path(
             "Research_Output/Literature_Library"
         )
+
+        self.oa_resolver = OpenAlexOAResolver()
 
 
     def safe_filename(self, text):
@@ -116,6 +122,13 @@ class PDFDownloader:
 
             if not pdf_url:
 
+                pdf_url = self.oa_resolver.resolve(
+                    paper
+                )
+
+
+            if not pdf_url:
+
                 status = "No PDF URL"
 
                 stats[
@@ -176,11 +189,33 @@ class PDFDownloader:
                             b"%PDF"
                         ):
 
-                            status = "Invalid PDF"
+                            resolved_url = self.oa_resolver.resolve(paper)
 
-                            stats[
-                                "invalid_pdf"
-                            ] += 1
+                            if resolved_url and resolved_url != pdf_url:
+                                try:
+                                    request = urllib.request.Request(
+                                        resolved_url,
+                                        headers={"User-Agent": "AROS Research Collector"}
+                                    )
+
+                                    with urllib.request.urlopen(request, timeout=20) as response:
+                                        content = response.read()
+
+                                    if content.startswith(b"%PDF"):
+                                        output.write_bytes(content)
+                                        paper["local_pdf_path"] = str(output)
+                                        paper["resolved_pdf_url"] = resolved_url
+                                        status = "Downloaded via OpenAlex"
+                                        stats["downloaded"] += 1
+                                    else:
+                                        status = "Invalid PDF"
+                                        stats["invalid_pdf"] += 1
+                                except Exception:
+                                    status = "Invalid PDF"
+                                    stats["invalid_pdf"] += 1
+                            else:
+                                status = "Invalid PDF"
+                                stats["invalid_pdf"] += 1
 
 
                         else:
@@ -203,11 +238,33 @@ class PDFDownloader:
 
                     except Exception:
 
-                        status = "Failed"
+                        resolved_url = self.oa_resolver.resolve(paper)
 
-                        stats[
-                            "failed"
-                        ] += 1
+                        if resolved_url and resolved_url != pdf_url:
+                            try:
+                                request = urllib.request.Request(
+                                    resolved_url,
+                                    headers={"User-Agent": "AROS Research Collector"}
+                                )
+
+                                with urllib.request.urlopen(request, timeout=20) as response:
+                                    content = response.read()
+
+                                if content.startswith(b"%PDF"):
+                                    output.write_bytes(content)
+                                    paper["local_pdf_path"] = str(output)
+                                    paper["resolved_pdf_url"] = resolved_url
+                                    status = "Downloaded via OpenAlex"
+                                    stats["downloaded"] += 1
+                                else:
+                                    status = "Failed"
+                                    stats["failed"] += 1
+                            except Exception:
+                                status = "Failed"
+                                stats["failed"] += 1
+                        else:
+                            status = "Failed"
+                            stats["failed"] += 1
 
 
 
