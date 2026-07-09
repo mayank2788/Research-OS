@@ -7,12 +7,13 @@ from pathlib import Path
 class PDFDownloader:
 
     """
-    AROS PDF Acquisition Engine v1.1
+    AROS PDF Acquisition Engine v1.2
 
-    Safe downloader:
-    - Open access URLs only
-    - Timeout protected
-    - Progress reporting
+    Features:
+    - OA PDF download
+    - duplicate prevention
+    - download reporting
+    - failure classification
     """
 
 
@@ -52,139 +53,221 @@ class PDFDownloader:
 
     def download_domain(self, domain):
 
-        path = self.library / domain
+        domain_path = self.library / domain
 
-        metadata = path / "metadata.json"
+        metadata_file = (
+            domain_path /
+            "metadata.json"
+        )
 
-        pdf_dir = path / "PDFs"
+        pdf_folder = (
+            domain_path /
+            "PDFs"
+        )
 
-        pdf_dir.mkdir(
+        pdf_folder.mkdir(
             exist_ok=True
         )
 
 
         papers = json.loads(
-            metadata.read_text(
+            metadata_file.read_text(
                 encoding="utf-8"
             )
         )
 
 
-        downloaded = 0
-        skipped = 0
+        report = []
+
+        stats = {
+
+            "downloaded": 0,
+            "already_exists": 0,
+            "no_pdf_url": 0,
+            "invalid_pdf": 0,
+            "failed": 0
+
+        }
 
 
-        for i, paper in enumerate(
+        for index, paper in enumerate(
             papers,
             start=1
         ):
 
             print(
-                "Checking",
-                i,
+                "Processing",
+                index,
                 "/",
                 len(papers)
             )
 
 
-            url = self.extract_pdf_url(
+            title = paper.get(
+                "title",
+                "paper"
+            )
+
+
+            pdf_url = self.extract_pdf_url(
                 paper
             )
 
 
-            if not url:
+            if not pdf_url:
 
-                skipped += 1
-                continue
+                status = "No PDF URL"
+
+                stats[
+                    "no_pdf_url"
+                ] += 1
 
 
-            filename = (
-                str(i).zfill(4)
-                + "_"
-                + self.safe_filename(
-                    paper.get(
-                        "title",
-                        "paper"
+            else:
+
+                filename = (
+
+                    str(index).zfill(4)
+                    + "_"
+                    + self.safe_filename(
+                        title
                     )
+                    + ".pdf"
                 )
-                + ".pdf"
+
+
+                output = (
+                    pdf_folder /
+                    filename
+                )
+
+
+                if output.exists():
+
+                    status = "Already Exists"
+
+                    stats[
+                        "already_exists"
+                    ] += 1
+
+
+                else:
+
+                    try:
+
+                        request = urllib.request.Request(
+                            pdf_url,
+                            headers={
+                                "User-Agent":
+                                "AROS Research Collector"
+                            }
+                        )
+
+
+                        with urllib.request.urlopen(
+                            request,
+                            timeout=20
+                        ) as response:
+
+                            content = response.read()
+
+
+                        if not content.startswith(
+                            b"%PDF"
+                        ):
+
+                            status = "Invalid PDF"
+
+                            stats[
+                                "invalid_pdf"
+                            ] += 1
+
+
+                        else:
+
+                            output.write_bytes(
+                                content
+                            )
+
+                            paper[
+                                "local_pdf_path"
+                            ] = str(output)
+
+
+                            status = "Downloaded"
+
+                            stats[
+                                "downloaded"
+                            ] += 1
+
+
+                    except Exception:
+
+                        status = "Failed"
+
+                        stats[
+                            "failed"
+                        ] += 1
+
+
+
+            report.append(
+                {
+                    "title": title,
+                    "status": status,
+                    "pdf_url": pdf_url
+                }
             )
 
 
-            output = pdf_dir / filename
 
+        metadata_file.write_text(
 
-            try:
-
-                request = urllib.request.Request(
-                    url,
-                    headers={
-                        "User-Agent":
-                        "AROS Research Collector"
-                    }
-                )
-
-
-                with urllib.request.urlopen(
-                    request,
-                    timeout=15
-                ) as response:
-
-                    content = response.read()
-
-
-                if not content.startswith(
-                    b"%PDF"
-                ):
-
-                    skipped += 1
-                    continue
-
-
-                output.write_bytes(
-                    content
-                )
-
-
-                paper["local_pdf_path"] = (
-                    str(output)
-                )
-
-
-                downloaded += 1
-
-
-            except Exception:
-
-                skipped += 1
-
-
-        metadata.write_text(
             json.dumps(
                 papers,
                 indent=2,
                 ensure_ascii=False
-            )
+            ),
+
+            encoding="utf-8"
+
         )
 
 
-        return {
+        report_file = (
+            domain_path /
+            "download_report.json"
+        )
 
-            "domain": domain,
 
-            "downloaded": downloaded,
+        report_file.write_text(
 
-            "skipped": skipped
-        }
+            json.dumps(
+                {
+                    "domain": domain,
+                    "statistics": stats,
+                    "papers": report
+                },
+                indent=2,
+                ensure_ascii=False
+            ),
+
+            encoding="utf-8"
+
+        )
+
+
+        return stats
 
 
 
 if __name__ == "__main__":
 
-    print(
-        PDFDownloader()
-        .download_domain(
-            "Finance"
-        )
+
+    result = PDFDownloader().download_domain(
+        "Finance"
     )
+
+
+    print(result)
 
