@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.0",
+  "connectors": {
+    "openalex": {
+      "enabled": true,
+      "base_url": "https://api.openalex.org",
+      "auth_type": "query_param",
+      "credential_env": "OPENALEX_API_KEY",
+      "credential_parameter": "api_key",
+      "contact_email_env": "AROS_CONTACT_EMAIL",
+      "health_endpoint": "/works",
+      "health_params": {
+        "per-page": 1
+      },
+      "policies": {
+        "list": {
+          "requests_per_second": 2,
+          "timeout_seconds": 30
+        },
+        "lookup": {
+          "requests_per_second": 2,
+          "timeout_seconds": 30
+        }
+      },
+      "health": {
+        "status": "unknown",
+        "last_checked": null
+      }
+    },
+
+    "crossref": {
+      "enabled": true,
+      "base_url": "https://api.crossref.org",
+      "auth_type": "contact_identity",
+      "contact_email_env": "AROS_CONTACT_EMAIL",
+      "health_endpoint": "/works",
+      "health_params": {
+        "rows": 1
+      },
+      "policies": {
+        "list": {
+          "requests_per_second": 2,
+          "timeout_seconds": 30
+        },
+        "lookup": {
+          "requests_per_second": 2,
+          "timeout_seconds": 30
+        }
+      },
+      "health": {
+        "status": "unknown",
+        "last_checked": null
+      }
+    },
+
+    "semantic_scholar": {
+      "enabled": true,
+      "base_url": "https://api.semanticscholar.org/graph/v1",
+      "auth_type": "header",
+      "credential_env": "SEMANTIC_SCHOLAR_API_KEY",
+      "credential_header": "x-api-key",
+      "health_endpoint": "/paper/search",
+      "health_params": {
+        "query": "finance",
+        "limit": 1
+      },
+      "policies": {
+        "search": {
+          "requests_per_second": 1,
+          "timeout_seconds": 30
+        },
+        "lookup": {
+          "requests_per_second": 1,
+          "timeout_seconds": 30
+        }
+      },
+      "health": {
+        "status": "unknown",
+        "last_checked": null
+      }
+    },
+
+    "core": {
+      "enabled": true,
+      "base_url": "https://api.core.ac.uk/v3",
+      "auth_type": "bearer",
+      "credential_env": "CORE_API_KEY",
+      "health_endpoint": "/search/works",
+      "health_method": "POST",
+      "health_json": {
+        "q": "finance",
+        "limit": 1
+      },
+      "policies": {
+        "search": {
+          "requests_per_second": 1,
+          "timeout_seconds": 30
+        },
+        "lookup": {
+          "requests_per_second": 1,
+          "timeout_seconds": 30
+        },
+        "download": {
+          "requests_per_second": 0.5,
+          "timeout_seconds": 60
+        }
+      },
+      "health": {
+        "status": "unknown",
+        "last_checked": null
+      }
+    },
+
+    "openaire": {
+      "enabled": true,
+      "base_url": "https://api.openaire.eu",
+      "auth_type": "oauth_client_credentials",
+      "client_id_env": "OPENAIRE_CLIENT_ID",
+      "client_secret_env": "OPENAIRE_CLIENT_SECRET",
+      "token_url_env": "OPENAIRE_TOKEN_URL",
+      "health_endpoint": "",
+      "policies": {
+        "search": {
+          "requests_per_second": 1,
+          "timeout_seconds": 30
+        }
+      },
+      "health": {
+        "status": "unknown",
+        "last_checked": null
+      }
+    }
+  }
+}

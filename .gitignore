@@ -38,3 +38,4 @@ extracted_text/
 # AROS generated research outputs
 Research_Output/
 
+config/connector_runtime_status.json
