@@ -122,3 +122,23 @@ Google Scholar, Zotero, Scopus, Web of Science or another citation tool
 → duplicate-safe repository
 
 Google Scholar is not scraped automatically. Its records enter through user-authorised exports.
+
+## OpenAlex Metadata Mapper
+
+OpenAlex records are now converted into Knowledge Objects through a dedicated mapper.
+
+The mapper preserves:
+
+- reconstructed abstract, when available;
+- OpenAlex and DOI identifiers;
+- authors;
+- keywords and topics;
+- journal and publisher metadata;
+- ISSN;
+- PDF and landing-page links;
+- open-access metadata;
+- citation and reference counts;
+- language and retraction status;
+- raw OpenAlex record.
+
+The connector remains responsible for API communication. The mapper is responsible for metadata transformation.

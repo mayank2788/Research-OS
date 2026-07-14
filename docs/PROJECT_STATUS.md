@@ -126,3 +126,28 @@ Verification:
 - Git diff validation passed.
 
 Google Scholar is integrated through user-authorised citation export and import. Automated Google Scholar scraping is not used.
+
+## OpenAlex Metadata Mapping
+
+Implemented and verified:
+
+- Dedicated OpenAlex metadata mapper.
+- Reconstruction of abstracts from OpenAlex inverted indexes.
+- Preservation of OpenAlex identifiers.
+- Author extraction.
+- Keyword and topic extraction.
+- Open-access and PDF-link extraction.
+- Journal, ISSN, publisher and publication metadata preservation.
+- Citation counts, reference counts, language and retraction metadata retained.
+- Existing OpenAlex connector updated to use the mapper.
+- Missing abstracts remain empty when OpenAlex does not provide them.
+
+Verification:
+
+- OpenAlex mapper tests: 4 passed.
+- BibTeX importer tests: 3 passed.
+- Repository tests: 5 passed.
+- Connector-framework tests: 4 passed.
+- Live OpenAlex search verified.
+- Python compilation passed.
+- Git diff validation passed.

@@ -30,3 +30,4 @@ Date: 13 July 2026
 | Repository Duplicate Detection | Verified | DOI and normalized-title duplicate detection; 5 automated tests passed |
 | BibTeX Importer | Verified | Parses citation exports into Knowledge Objects and saves them through duplicate-safe repository persistence; 3 automated tests passed |
 | Google Scholar Import | Verified | Supports user-authorised Google Scholar BibTeX exports without automated scraping |
+| OpenAlex Metadata Mapper | Verified | Maps OpenAlex records into Knowledge Objects while preserving abstracts, identifiers, journal metadata, keywords, open-access links and raw source metadata; 4 automated tests passed |

@@ -9,6 +9,7 @@ from connector_framework.execution_manager import (
 )
 from connectors.base.base_connector import BaseConnector
 from knowledge.knowledge_object import KnowledgeObject
+from mappers.openalex_mapper import map_openalex_record
 
 
 class OpenAlexConnector(BaseConnector):
@@ -39,54 +40,6 @@ class OpenAlexConnector(BaseConnector):
             registry=self.registry,
             credential_manager=self.credential_manager,
         )
-
-    @staticmethod
-    def _authors(item: dict) -> List[str]:
-        authors = []
-
-        for authorship in item.get("authorships", []):
-            author = authorship.get("author") or {}
-            display_name = author.get("display_name")
-
-            if display_name:
-                authors.append(display_name)
-
-        return authors
-
-    @staticmethod
-    def _pdf_link(item: dict) -> str:
-        locations = [
-            item.get("best_oa_location") or {},
-            item.get("primary_location") or {},
-        ]
-
-        locations.extend(item.get("locations") or [])
-
-        for location in locations:
-            pdf_url = location.get("pdf_url")
-
-            if pdf_url:
-                return pdf_url
-
-        for location in locations:
-            landing_url = location.get("landing_page_url")
-
-            if landing_url:
-                return landing_url
-
-        return ""
-
-    @staticmethod
-    def _topic_keywords(item: dict, query: str) -> List[str]:
-        keywords = [query]
-
-        for topic in item.get("topics", [])[:3]:
-            display_name = topic.get("display_name")
-
-            if display_name:
-                keywords.append(display_name)
-
-        return list(dict.fromkeys(keywords))
 
     def health(self) -> dict:
         result = self.execution_manager.request(
@@ -127,32 +80,11 @@ class OpenAlexConnector(BaseConnector):
             },
         )
 
-        results = []
-
-        for item in data.get("results", []):
-            open_access = item.get("open_access") or {}
-
-            knowledge = KnowledgeObject(
-                title=item.get("title") or "",
-                source=self.name,
-                source_type="Academic API",
-                document_type=item.get("type") or "Journal Article",
+        return [
+            map_openalex_record(
+                record=item,
                 research_domain=query,
-                authors=self._authors(item),
-                publication_year=str(
-                    item.get("publication_year") or ""
-                ),
-                doi=item.get("doi") or "",
-                abstract="",
-                keywords=self._topic_keywords(item, query),
-                pdf_link=self._pdf_link(item),
-                open_access=bool(
-                    open_access.get("is_oa", False)
-                ),
-                status="discovered",
-                confidence=0.85,
+                source=self.name,
             )
-
-            results.append(knowledge)
-
-        return results
+            for item in data.get("results", [])
+        ]
