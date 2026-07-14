@@ -39,3 +39,14 @@ extracted_text/
 Research_Output/
 
 config/connector_runtime_status.json
+
+# Generated literature Knowledge Objects
+knowledge/objects/literature/
+
+# Python cache
+*.py[cod]
+
+# Generated and locally acquired research datasets
+journal_intelligence/raw_sources/
+journal_intelligence/processed/
+journal_intelligence/domain_filtered/

@@ -1,12 +1,20 @@
 # AROS AI Handoff
 
+Date: 13 July 2026
+
 This file allows ChatGPT, Claude, Gemini, Cursor or any future AI assistant to resume AROS development consistently.
 
 ## Project
 
 AROS — AI Research Operating System
 
-AROS is an AI-native research platform for academic research, finance, economics, public policy, corporate governance and knowledge management.
+AROS is an AI-native research platform supporting academic research, finance, accounting, taxation, economics, management, corporate governance, public policy and knowledge management.
+
+## Authoritative Context
+
+The Research-OS repository and its docs folder are the authoritative project record.
+
+Do not rely only on conversation memory from ChatGPT, Clher AI system.
 
 ## Architecture Rule
 
@@ -24,38 +32,66 @@ Repository
 ↓
 Future AI Layer
 
-## Current Verified Baseline
+## Current Committed Baseline
 
-5eb694b Add OpenAlex academic connector
+8ca535a — Migrate OpenAlex connector to shared framework
 
-## Latest Completed Milestone
+## Pending Verified Milestone
 
-The first complete local PDF research pipeline was built and verified.
+A Baseline 0.3 candidate is prepared locally and verified but not yet committed.
 
-Pipeline:
+It includes:
 
-Local PDF
-↓
-Reader
-↓
-Knowledge Object
-↓
-SQLite Repository
+- Academic connector abstraction.
+- Core connector.
+- OpenAlex connector using the shared framework.
+- Connector registry integration.
+- Credential manager integration.
+- Execution manager integration.
+- Rate limiting and retry support.
+- Open Access Resolver.
+- Repository Ingestion Engine.
+- Automated connector tests.
+- AROS inspection script.
+- Updated Git ignore rules for generated research outputs.
 
-## Important Development Preference
+## Verification Completed
 
-Documentation must be updated alongside meaningful code milestones so that any AI platform can continue from the same project state.
+- Shell syntax passed.
+- Inspection script execution passed.
+- Python compilation passed.
+- Four automated connectorsed.
+- OpenAlex health check returned HTTP 200.
+- OpenAlex search returned live results.
 
-## Cross-AI Continuity Principle
+## Verified Existing Modules
 
-AROS itself, through the Research-OS repository and docs folder, should be the authoritative source of project knowledge.
+- Reader.
+- Knowledge Object.
+- Repository.
+- Connector Framework.
+- Profile.
+- Scout.
+- app.py.
+- Local Live Research Pipeline.
+- OpenAlex Academic Connector.
 
-Do not rely only on memory inside ChatGPT, Claude or Gemini.
+## Local Generated Assets
 
-## Next Objective
+Generated journal datasets and literature Knowledge Objects are retained locally and excluded from Git.
 
-OpenAlex academic connector verified. Next objective is connector intelligence improvement while preserving the Knowledge Object and Repository flow.
+They must not be added automatically to commits.
 
-Do not over-engineer.
-Do not rewrite verified modules.
-Audit before changing existing code.
+## Immediate Next Action
+
+Review the staged file list, commit the verified Baseline 0.3 milestone and push to origin/main.
+
+## Development Rules
+
+- One objective at a time.
+- Audit before change.
+- Do not rewrite verified modules unnecessarily.
+- Test before calling implementation complete.
+- Update documentation alongside meaningful milestones.
+- Distinguish achieved implementation from proposed work.
+- Keep connectors, Knowledge Objects, repositories and future AI modules loosely coupled.
