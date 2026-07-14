@@ -108,3 +108,17 @@ Current duplite rules:
 `add_knowledge_object()` remains available for backward compatibility and now delegates to `save_knowledge_object()`.
 
 Historical duplicates have not yet been modified or removed.
+
+## Citation Import
+
+AROS now supports BibTeX citation-file imports.
+
+Primary workflow:
+
+Google Scholar, Zotero, Scopus, Web of Science or another citation tool
+→ BibTeX export
+→ BibTeX importer
+→ Knowledge Object
+→ duplicate-safe repository
+
+Google Scholar is not scraped automatically. Its records enter through user-authorised exports.

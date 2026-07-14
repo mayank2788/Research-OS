@@ -104,3 +104,25 @@ Verification:
 - Git diff validation passed.
 
 Historical duplicate records remain unchanged. The new behaviour prevents additional exact duplicates through current repository call sites.
+
+## BibTeX Citation Import
+
+Implemented and verified:
+
+- General BibTeX file parser using the Python standard library.
+- Conversion of BibTeX records into Knowledge Objects.
+- Import through the duplicate-safe repository.
+- Support for Google Scholar BibTeX exports.
+- Compatibility with BibTeX exports from Zotero, Scopus, Web of Science and other citation tools.
+- Preservation of citation key, journal, publisher, volume, issue, pages, ISSN, ISBN and raw imported metadata.
+- Knowledge Object metadata field added for extensible source metadata.
+
+Verification:
+
+- BibTeX importer tests: 3 passed.
+- Repository tests: 5 passed.
+- Connector tests: 4 passed.
+- Python compilation passed.
+- Git diff validation passed.
+
+Google Scholar is integrated through user-authorised citation export and import. Automated Google Scholar scraping is not used.

@@ -2,7 +2,7 @@ from dataclasses import dataclass, asdict
 from datetime import datetime
 import json
 from pathlib import Path
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 
 @dataclass
@@ -25,6 +25,7 @@ class KnowledgeObject:
     status: Optional[str] = "discovered"
     confidence: Optional[float] = 0.0
     date_added: Optional[str] = ""
+    metadata: Optional[Dict[str, Any]] = None
 
     def __post_init__(self):
         if self.authors is None:
@@ -33,6 +34,8 @@ class KnowledgeObject:
             self.keywords = []
         if not self.date_added:
             self.date_added = datetime.now().isoformat(timespec="seconds")
+        if self.metadata is None:
+            self.metadata = {}
 
     def to_dict(self):
         return asdict(self)

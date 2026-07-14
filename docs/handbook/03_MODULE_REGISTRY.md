@@ -28,3 +28,5 @@ Date: 13 July 2026
 | AI Synthesis Layer | Proposed | Future research synthesis and reasoning layer |
 | Research UI | Proposed | Future user-facing interaction layer |
 | Repository Duplicate Detection | Verified | DOI and normalized-title duplicate detection; 5 automated tests passed |
+| BibTeX Importer | Verified | Parses citation exports into Knowledge Objects and saves them through duplicate-safe repository persistence; 3 automated tests passed |
+| Google Scholar Import | Verified | Supports user-authorised Google Scholar BibTeX exports without automated scraping |
