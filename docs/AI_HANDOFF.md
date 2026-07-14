@@ -95,3 +95,16 @@ Review the staged file list, commit the verified Baseline 0.3 milestone and push
 - Update documentation alongside meaningful milestones.
 - Distinguish achieved implementation from proposed work.
 - Keep connectors, Knowledge Objects, repositories and future AI modules loosely coupled.
+
+## Latest Repository Milestone
+
+Repository v1.1 adds duplicate-safe persistence without changing existing connector or pipeline interfaces.
+
+Current duplite rules:
+
+1. Normalized DOI match.
+2. Exact normalized-title match only when DOI is unavailable.
+
+`add_knowledge_object()` remains available for backward compatibility and now delegates to `save_knowledge_object()`.
+
+Historical duplicates have not yet been modified or removed.

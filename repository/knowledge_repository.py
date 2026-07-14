@@ -1,15 +1,44 @@
-import sqlite3
 import json
+import re
+import sqlite3
 from pathlib import Path
-from datetime import datetime
+from typing import Optional
 
 DB_FILE = Path("data/aros_knowledge.db")
 DB_FILE.parent.mkdir(exist_ok=True)
 
-def connect():
+
+def connect() -> sqlite3.Connection:
     return sqlite3.connect(DB_FILE)
 
-def initialize_database():
+
+def normalize_doi(doi: Optional[str]) -> str:
+    """Return a consistent DOI value for comparison and storage."""
+    value = str(doi or "").strip().lower()
+
+    prefixes = (
+        "https://doi.org/",
+        "http://doi.org/",
+        "http://dx.doi.org/",
+        "doi:",
+    )
+
+    for prefix in prefixes:
+        if value.startswith(prefix):
+            value = value[len(prefix):]
+            break
+
+    return value.strip()
+
+
+def normalize_title(title: Optional[str]) -> str:
+    """Normalize a title for exact duplicate comparison."""
+    value = str(title or "").strip().lower()
+    value = re.sub(r"\s+", " ", value)
+    return value
+
+
+def initialize_database() -> None:
     conn = connect()
     cursor = conn.cursor()
 
@@ -40,8 +69,106 @@ def initialize_database():
     conn.commit()
     conn.close()
 
-def add_knowledge_object(obj):
+
+def find_by_doi(doi: Optional[str]):
+    normalized = normalize_doi(doi)
+
+    if not normalized:
+        return None
+
+    conn = connect()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    SELECT id, title, doi, source, status
+    FROM knowledge_objects
+    WHERE LOWER(
+        TRIM(
+            REPLACE(
+                REPLACE(
+                    REPLACE(
+                        REPLACE(doi, 'https://doi.org/', ''),
+                        'http://doi.org/',
+                        ''
+                    ),
+                    'http://dx.doi.org/',
+                    ''
+                ),
+                'doi:',
+                ''
+            )
+        )
+    ) = ?
+    ORDER BY id ASC
+    LIMIT 1
+    """, (normalized,))
+
+    row = cursor.fetchone()
+    conn.close()
+
+    return row
+
+
+def find_by_title(title: Optional[str]):
+    normalized = normalize_title(title)
+
+    if not normalized:
+        return None
+
+    conn = connect()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    SELECT id, title, doi, source, status
+    FROM knowledge_objects
+    ORDER BY id ASC
+    """)
+
+    row = None
+
+    for candidate in cursor.fetchall():
+        if normalize_title(candidate[1]) == normalized:
+            row = candidate
+            break
+
+    conn.close()
+
+    return row
+
+
+def knowledge_object_exists(obj) -> bool:
+    normalized_doi = normalize_doi(getattr(obj, "doi", ""))
+
+    if normalized_doi:
+        return find_by_doi(normalized_doi) is not None
+
+    return find_by_title(getattr(obj, "title", "")) is not None
+
+
+def save_knowledge_object(obj) -> int:
+    """
+    Save a KnowledgeObject without creating an exact duplicate.
+
+    Duplicate priority:
+    1. Normalized DOI
+    2. Exact normalized title when DOI is unavailable
+
+    Returns the existing row ID for duplicates or the new row ID
+    for newly inserted records.
+    """
     data = obj.to_dict()
+
+    normalized_doi = normalize_doi(data.get("doi"))
+
+    if normalized_doi:
+        existing = find_by_doi(normalized_doi)
+    else:
+        existing = find_by_title(data.get("title"))
+
+    if existing:
+        return int(existing[0])
+
+    data["doi"] = normalized_doi
 
     conn = connect()
     cursor = conn.cursor()
@@ -72,14 +199,24 @@ def add_knowledge_object(obj):
         data["status"],
         data["confidence"],
         data["date_added"],
-        json.dumps(data, ensure_ascii=False)
+        json.dumps(data, ensure_ascii=False),
     ))
 
     conn.commit()
-    inserted_id = cursor.lastrowid
+    inserted_id = int(cursor.lastrowid)
     conn.close()
 
     return inserted_id
+
+
+def add_knowledge_object(obj) -> int:
+    """
+    Backward-compatible wrapper.
+
+    Existing pipelines may continue calling add_knowledge_object().
+    """
+    return save_knowledge_object(obj)
+
 
 def list_knowledge_objects():
     conn = connect()
@@ -93,14 +230,17 @@ def list_knowledge_objects():
 
     rows = cursor.fetchall()
     conn.close()
+
     return rows
 
-def count_knowledge_objects():
+
+def count_knowledge_objects() -> int:
     conn = connect()
     cursor = conn.cursor()
 
     cursor.execute("SELECT COUNT(*) FROM knowledge_objects")
-    count = cursor.fetchone()[0]
+    count = int(cursor.fetchone()[0])
 
     conn.close()
+
     return count

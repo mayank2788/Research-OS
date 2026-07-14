@@ -27,3 +27,4 @@ Date: 13 July 2026
 | Literature Knowledge Objects | Local Asset | 1,118 generated JSON objects present at verification and excluded from Git |
 | AI Synthesis Layer | Proposed | Future research synthesis and reasoning layer |
 | Research UI | Proposed | Future user-facing interaction layer |
+| Repository Duplicate Detection | Verified | DOI and normalized-title duplicate detection; 5 automated tests passed |

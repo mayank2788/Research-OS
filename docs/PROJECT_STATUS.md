@@ -83,3 +83,24 @@ Plan → Inspect → Understand → Document → Implement → Test → Verify �
 Complete the Baseline 0.3 commit and push.
 
 After the baseline is frozen, select one connector-intelligence objective without redesigning verified architecture.
+
+## Repository v1.1 — Duplicate-Safe Saving
+
+Implemented and verified:
+
+- DOI normalization.
+- DOI-based duplicate detection.
+- Exact normalized-title duplicate detection when DOI is unavailable.
+- Duplicate-safe `save_knowledge_object()` behaviour.
+- Backward-compatible `add_knowledge_object()` wrapper.
+- Existing row ID returned when an exact duplicate is detected.
+- Isolated automated repository tests using temporary SQLite databases.
+
+Verification:
+
+- Repository tests: 5 passed.
+- Connector tests: 4 passed.
+- Python compilation passed.
+- Git diff validation passed.
+
+Historical duplicate records remain unchanged. The new behaviour prevents additional exact duplicates through current repository call sites.
