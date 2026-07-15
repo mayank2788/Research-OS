@@ -142,3 +142,37 @@ The mapper preserves:
 - raw OpenAlex record.
 
 The connector remains responsible for API communication. The mapper is responsible for metadata transformation.
+
+## Canonical Repository Lifecycle Milestone
+
+The repository now acts as the canonical lifecycle store for Knowledge Objects.
+
+Identity order:
+
+1. Normalized DOI.
+2. Exact normalized title only when DOI is unavailable.
+
+Persistence outcomes:
+
+- `inserted` — a new canonical row was created.
+- `updated` — an existing canonical row received improved metadata or advanced lifecycle state.
+- `existing` — the incoming object did not improve the canonical record.
+
+Lifecycle progression currently recognises:
+
+discovered → ingested/downloaded → enriched → evaluated → verified
+
+Merge behaviour includes:
+
+- union of authors and keywords;
+- preservation of the longer abstract and AI summary;
+- preservation of existing non-empty source metadata;
+- retention of PDF and local-file paths;
+- logical promotion of open-access status;
+- retention of the highest confidence;
+- prevention of lifecycle regression;
+- preservation of the existing repository record ID.
+
+`add_knowledge_object()` remains available for backward compatibility.
+
+Historical duplicate migration and database uniqueness constraints remain proposed and must be completed only after a verified backup and migration procedure.

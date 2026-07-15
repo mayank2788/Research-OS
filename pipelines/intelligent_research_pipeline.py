@@ -1,7 +1,7 @@
 from connectors.openalex.openalex_connector import OpenAlexConnector
 from repository.knowledge_repository import (
     initialize_database,
-    add_knowledge_object,
+    save_knowledge_object,
     count_knowledge_objects,
     list_knowledge_objects,
 )
@@ -35,7 +35,9 @@ def run_intelligent_research_pipeline(
         reverse=True,
     )
 
-    saved_count = 0
+    inserted_count = 0
+    updated_count = 0
+    existing_count = 0
 
     print("=" * 70)
     print("AROS INTELLIGENT RESEARCH PIPELINE")
@@ -69,16 +71,33 @@ def run_intelligent_research_pipeline(
                 f"Score Breakdown: {evaluation['score_breakdown']}"
             )
             paper.status = "evaluated"
-            record_id = add_knowledge_object(paper)
-            saved_count += 1
-            print(f"Saved to repository: YES | Record ID: {record_id}")
+            repository_result = save_knowledge_object(
+                paper,
+                return_status=True,
+            )
+            record_id = repository_result["record_id"]
+            repository_status = repository_result["status"]
+
+            if repository_status == "inserted":
+                inserted_count += 1
+            elif repository_status == "updated":
+                updated_count += 1
+            else:
+                existing_count += 1
+
+            print(
+                f"{repository_status.upper():8} | "
+                f"Record ID: {record_id}"
+            )
         else:
             print("Saved to repository: NO")
 
     print()
     print("Pipeline Summary")
     print("----------------")
-    print(f"Saved papers: {saved_count}")
+    print(f"Inserted papers: {inserted_count}")
+    print(f"Updated papers: {updated_count}")
+    print(f"Existing papers: {existing_count}")
     print(f"Total repository objects: {count_knowledge_objects()}")
 
     print()

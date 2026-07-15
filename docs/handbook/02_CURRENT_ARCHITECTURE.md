@@ -116,3 +116,40 @@ These datasets are local research assets and are excluded from Git because of th
 - Research user interfaces.
 
 These are proposed and must not be described as implemented.
+
+## Canonical Repository Lifecycle
+
+The repository layer now supports canonical lifecycle persistence:
+
+Source
+↓
+Connector
+↓
+Knowledge Object
+↓
+Identity Resolution
+↓
+Canonical Repository Record
+↓
+Metadata Merge and Lifecycle Progression
+↓
+Future AI Layer
+
+Repository identity priority:
+
+1. Normalized DOI.
+2. Exact normalized title when DOI is unavailable.
+
+For an existing canonical record, AROS retains the existing record ID and merges improved metadata rather than creating a new row.
+
+Recognised lifecycle progression:
+
+discovered → ingested/downloaded → enriched → evaluated → verified
+
+Repository outcomes are explicitly reported as:
+
+- inserted;
+- updated;
+- existing.
+
+Historical duplicate cleanup and database uniqueness enforcement reon work and are not yet part of the verified architecture.

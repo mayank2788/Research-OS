@@ -31,3 +31,13 @@ Date: 13 July 2026
 | BibTeX Importer | Verified | Parses citation exports into Knowledge Objects and saves them through duplicate-safe repository persistence; 3 automated tests passed |
 | Google Scholar Import | Verified | Supports user-authorised Google Scholar BibTeX exports without automated scraping |
 | OpenAlex Metadata Mapper | Verified | Maps OpenAlex records into Knowledge Objects while preserving abstracts, identifiers, journal metadata, keywords, open-access links and raw source metadata; 4 automated tests passed |
+
+## Repository Lifecycle Milestone
+
+| Module | Status | Notes |
+|---|---|---|
+| Repository Lifecycle Management | Verified | Canonical DOI/title identity resolution, UPSERT-style updates, metadata merging, lifecycle progression and non-regression |
+| Repository Status Reporting | Verified | Returns and reports inserted, updated and existing outcomes |
+| Repository Lifecycle Tests | Verified | 10 isolated automated repository tests passed |
+| Historical Duplicate Migration | Proposed | Controlled consolidation of legacy duplicate rows after backup and migration verification |
+| Database Uniqueness Enforcement | Proposed | Unique canonical identifiers to be enforced only after historical duplicate migration |

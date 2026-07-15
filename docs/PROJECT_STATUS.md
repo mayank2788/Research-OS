@@ -151,3 +151,30 @@ Verification:
 - Live OpenAlex search verified.
 - Python compilation passed.
 - Git diff validation passed.
+
+## Repository v2.0 — Canonical Lifecycle Repository
+
+Implemented and verified:
+
+- Canonical identity resolution using normalized DOI.
+- Exact normalized-title fallback when DOI is unavailable.
+- Insert-or-update repository behaviour while preserving the canonical record ID.
+- Lifecycle progression across discovered, ingested/downloaded, enriched, evaluated and verified states.
+- Lifecycle status cannot regress to an earlier recognised stage.
+- Field-level metadata merging for authors, keywords, abstracts, PDF links, local files, AI summaries, open-access status and confidence.
+- Existing high-quality metadata is preserved when incoming metadata is empty or poorer.
+- Status-aware repository results: `inserted`, `updated` and `existing`.
+- Backward-compatible `add_knowledge_object()` integer-returning wrapper.
+- Intelligent Research Pipeline updated to report insertupdated and existing records separately.
+- OpenAlex and mock connector verification scripts updated to report repository lifecycle outcomes accurately.
+
+Verification:
+
+- Repository tests: 10 passed.
+- Connector-framework tests: 4 passed.
+- Live Intelligent Research Pipeline verified.
+- Live OpenAlex and mock connector processing verified.
+- Repository total remained stable during update-only runs.
+- Git diff validation passed.
+
+Historical duplicate rows remain pending controlled migration. Database-level uniqueness enforcement has not yet been applied.

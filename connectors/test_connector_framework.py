@@ -1,7 +1,7 @@
 from connectors.mock.mock_connector import MockAcademicConnector
 from repository.knowledge_repository import (
     initialize_database,
-    add_knowledge_object,
+    save_knowledge_object,
     count_knowledge_objects,
     list_knowledge_objects
 )
@@ -29,8 +29,15 @@ print(f"Results returned: {len(results)}")
 print()
 print("Saving results to Knowledge Repository...")
 for item in results:
-    record_id = add_knowledge_object(item)
-    print(f"Saved Record ID {record_id}: {item.title}")
+    result = save_knowledge_object(
+        item,
+        return_status=True,
+    )
+    print(
+        f"{result['status'].upper():8} | "
+        f"Record ID: {result['record_id']} | "
+        f"{item.title}"
+    )
 
 print()
 print("Total records in repository:", count_knowledge_objects())
@@ -46,4 +53,4 @@ print("Status")
 print("------")
 print("✓ Connector Framework working.")
 print("✓ Mock connector returned Knowledge Objects.")
-print("✓ Knowledge Objects saved into Repository.")
+print("✓ Knowledge Objects processed through lifecycle repository.")

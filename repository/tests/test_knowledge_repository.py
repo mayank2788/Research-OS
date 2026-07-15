@@ -110,5 +110,144 @@ class TestKnowledgeRepository(unittest.TestCase):
         )
 
 
+    def test_status_inserted(self) -> None:
+        item = self.make_object()
+
+        result = knowledge_repository.save_knowledge_object(
+            item,
+            return_status=True,
+        )
+
+        self.assertEqual(result["status"], "inserted")
+        self.assertIsInstance(result["record_id"], int)
+        self.assertEqual(
+            knowledge_repository.count_knowledge_objects(),
+            1,
+        )
+
+    def test_status_existing(self) -> None:
+        first = self.make_object()
+        second = self.make_object()
+
+        first_id = knowledge_repository.save_knowledge_object(first)
+
+        result = knowledge_repository.save_knowledge_object(
+            second,
+            return_status=True,
+        )
+
+        self.assertEqual(result["status"], "existing")
+        self.assertEqual(result["record_id"], first_id)
+        self.assertEqual(
+            knowledge_repository.count_knowledge_objects(),
+            1,
+        )
+
+
+
+    def test_lifecycle_status_advances(self) -> None:
+        discovered = self.make_object()
+        discovered.status = "discovered"
+        discovered.abstract = "Short abstract."
+
+        evaluated = self.make_object()
+        evaluated.status = "evaluated"
+        evaluated.abstract = (
+            "A substantially longer and more informative abstract "
+            "for lifecycle merge verification."
+        )
+        evaluated.ai_summary = "Research evaluation completed."
+        evaluated.confidence = 0.95
+
+        first_id = knowledge_repository.save_knowledge_object(discovered)
+
+        result = knowledge_repository.save_knowledge_object(
+            evaluated,
+            return_status=True,
+        )
+
+        record = knowledge_repository.get_knowledge_object_record(first_id)
+
+        self.assertEqual(result["status"], "updated")
+        self.assertEqual(result["record_id"], first_id)
+        self.assertEqual(record["status"], "evaluated")
+        self.assertEqual(record["abstract"], evaluated.abstract)
+        self.assertEqual(record["ai_summary"], evaluated.ai_summary)
+        self.assertEqual(record["confidence"], 0.95)
+        self.assertEqual(
+            knowledge_repository.count_knowledge_objects(),
+            1,
+        )
+
+    def test_lifecycle_status_does_not_regress(self) -> None:
+        evaluated = self.make_object()
+        evaluated.status = "evaluated"
+        evaluated.ai_summary = "Completed evaluation."
+
+        discovered = self.make_object()
+        discovered.status = "discovered"
+        discovered.ai_summary = ""
+
+        record_id = knowledge_repository.save_knowledge_object(evaluated)
+
+        result = knowledge_repository.save_knowledge_object(
+            discovered,
+            return_status=True,
+        )
+
+        record = knowledge_repository.get_knowledge_object_record(record_id)
+
+        self.assertIn(result["status"], {"existing", "updated"})
+        self.assertEqual(record["status"], "evaluated")
+        self.assertEqual(record["ai_summary"], "Completed evaluation.")
+        self.assertEqual(
+            knowledge_repository.count_knowledge_objects(),
+            1,
+        )
+
+    def test_metadata_merge_rules(self) -> None:
+        original = self.make_object()
+        original.authors = ["Author One"]
+        original.keywords = ["debt"]
+        original.abstract = "Short."
+        original.pdf_link = ""
+        original.local_file = ""
+        original.open_access = False
+        original.confidence = 0.60
+
+        improved = self.make_object()
+        improved.authors = ["Author One", "Author Two"]
+        improved.keywords = ["debt", "finance"]
+        improved.abstract = "A longer and more useful abstract."
+        improved.pdf_link = "https://example.org/paper.pdf"
+        improved.local_file = "/tmp/paper.pdf"
+        improved.open_access = True
+        improved.confidence = 0.90
+        improved.status = "enriched"
+
+        record_id = knowledge_repository.save_knowledge_object(original)
+
+        result = knowledge_repository.save_knowledge_object(
+            improved,
+            return_status=True,
+        )
+
+        record = knowledge_repository.get_knowledge_object_record(record_id)
+
+        self.assertEqual(result["status"], "updated")
+        self.assertEqual(
+            record["authors"],
+            ["Author One", "Author Two"],
+        )
+        self.assertEqual(record["keywords"], ["debt", "finance"])
+        self.assertEqual(record["abstract"], improved.abstract)
+        self.assertEqual(record["pdf_link"], improved.pdf_link)
+        self.assertEqual(record["local_file"], improved.local_file)
+        self.assertTrue(record["open_access"])
+        self.assertEqual(record["confidence"], 0.90)
+        self.assertEqual(record["status"], "enriched")
+
+
+
 if __name__ == "__main__":
     unittest.main()

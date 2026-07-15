@@ -2,10 +2,19 @@ import json
 import re
 import sqlite3
 from pathlib import Path
-from typing import Optional
+from typing import Any, Dict, List, Optional
 
 DB_FILE = Path("data/aros_knowledge.db")
 DB_FILE.parent.mkdir(exist_ok=True)
+
+STATUS_RANK = {
+    "discovered": 10,
+    "ingested": 20,
+    "downloaded": 20,
+    "enriched": 30,
+    "evaluated": 40,
+    "verified": 50,
+}
 
 
 def connect() -> sqlite3.Connection:
@@ -136,6 +145,36 @@ def find_by_title(title: Optional[str]):
     return row
 
 
+def get_knowledge_object_record(record_id: int) -> Optional[Dict[str, Any]]:
+    conn = connect()
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    SELECT *
+    FROM knowledge_objects
+    WHERE id = ?
+    """, (record_id,))
+
+    row = cursor.fetchone()
+    conn.close()
+
+    if row is None:
+        return None
+
+    record = dict(row)
+
+    for field in ("authors", "keywords"):
+        try:
+            record[field] = json.loads(record.get(field) or "[]")
+        except (json.JSONDecodeError, TypeError):
+            record[field] = []
+
+    record["open_access"] = bool(record.get("open_access"))
+
+    return record
+
+
 def knowledge_object_exists(obj) -> bool:
     normalized_doi = normalize_doi(getattr(obj, "doi", ""))
 
@@ -145,30 +184,277 @@ def knowledge_object_exists(obj) -> bool:
     return find_by_title(getattr(obj, "title", "")) is not None
 
 
-def save_knowledge_object(obj) -> int:
-    """
-    Save a KnowledgeObject without creating an exact duplicate.
+def merge_unique(existing: Any, incoming: Any) -> List[str]:
+    merged: List[str] = []
 
-    Duplicate priority:
+    for value in list(existing or []) + list(incoming or []):
+        text = str(value or "").strip()
+
+        if text and text not in merged:
+            merged.append(text)
+
+    return merged
+
+
+def choose_longer(existing: Any, incoming: Any) -> str:
+    existing_text = str(existing or "").strip()
+    incoming_text = str(incoming or "").strip()
+
+    if len(incoming_text) > len(existing_text):
+        return incoming_text
+
+    return existing_text
+
+
+def choose_non_empty(existing: Any, incoming: Any) -> str:
+    existing_text = str(existing or "").strip()
+    incoming_text = str(incoming or "").strip()
+
+    return existing_text or incoming_text
+
+
+def advance_status(existing: Any, incoming: Any) -> str:
+    existing_status = str(existing or "").strip().lower()
+    incoming_status = str(incoming or "").strip().lower()
+
+    if not existing_status:
+        return incoming_status
+
+    if not incoming_status:
+        return existing_status
+
+    existing_rank = STATUS_RANK.get(existing_status)
+    incoming_rank = STATUS_RANK.get(incoming_status)
+
+    if existing_rank is None and incoming_rank is None:
+        return existing_status
+
+    if existing_rank is None:
+        return incoming_status
+
+    if incoming_rank is None:
+        return existing_status
+
+    if incoming_rank > existing_rank:
+        return incoming_status
+
+    return existing_status
+
+
+def merge_knowledge_object_data(
+    existing: Dict[str, Any],
+    incoming: Dict[str, Any],
+) -> Dict[str, Any]:
+    merged = {
+        "title": choose_non_empty(existing.get("title"), incoming.get("title")),
+        "source": choose_non_empty(existing.get("source"), incoming.get("source")),
+        "source_type": choose_non_empty(
+            existing.get("source_type"),
+            incoming.get("source_type"),
+        ),
+        "document_type": choose_non_empty(
+            existing.get("document_type"),
+            incoming.get("document_type"),
+        ),
+        "research_domain": choose_non_empty(
+            existing.get("research_domain"),
+            incoming.get("research_domain"),
+        ),
+        "authors": merge_unique(
+            existing.get("authors"),
+            incoming.get("authors"),
+        ),
+        "publication_year": choose_non_empty(
+            existing.get("publication_year"),
+            incoming.get("publication_year"),
+        ),
+        "doi": normalize_doi(
+            existing.get("doi") or incoming.get("doi")
+        ),
+        "abstract": choose_longer(
+            existing.get("abstract"),
+            incoming.get("abstract"),
+        ),
+        "keywords": merge_unique(
+            existing.get("keywords"),
+            incoming.get("keywords"),
+        ),
+        "pdf_link": choose_non_empty(
+            existing.get("pdf_link"),
+            incoming.get("pdf_link"),
+        ),
+        "open_access": bool(
+            existing.get("open_access") or incoming.get("open_access")
+        ),
+        "local_file": choose_non_empty(
+            existing.get("local_file"),
+            incoming.get("local_file"),
+        ),
+        "ai_summary": choose_longer(
+            existing.get("ai_summary"),
+            incoming.get("ai_summary"),
+        ),
+        "status": advance_status(
+            existing.get("status"),
+            incoming.get("status"),
+        ),
+        "confidence": max(
+            float(existing.get("confidence") or 0.0),
+            float(incoming.get("confidence") or 0.0),
+        ),
+        "date_added": choose_non_empty(
+            existing.get("date_added"),
+            incoming.get("date_added"),
+        ),
+    }
+
+    return merged
+
+
+def records_differ(
+    existing: Dict[str, Any],
+    merged: Dict[str, Any],
+) -> bool:
+    comparable_fields = (
+        "title",
+        "source",
+        "source_type",
+        "document_type",
+        "research_domain",
+        "authors",
+        "publication_year",
+        "doi",
+        "abstract",
+        "keywords",
+        "pdf_link",
+        "open_access",
+        "local_file",
+        "ai_summary",
+        "status",
+        "confidence",
+        "date_added",
+    )
+
+    for field in comparable_fields:
+        existing_value = existing.get(field)
+        merged_value = merged.get(field)
+
+        if field == "doi":
+            existing_value = normalize_doi(existing_value)
+
+        if existing_value != merged_value:
+            return True
+
+    return False
+
+
+def update_knowledge_object(
+    record_id: int,
+    merged: Dict[str, Any],
+) -> None:
+    conn = connect()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    UPDATE knowledge_objects
+    SET
+        title = ?,
+        source = ?,
+        source_type = ?,
+        document_type = ?,
+        research_domain = ?,
+        authors = ?,
+        publication_year = ?,
+        doi = ?,
+        abstract = ?,
+        keywords = ?,
+        pdf_link = ?,
+        open_access = ?,
+        local_file = ?,
+        ai_summary = ?,
+        status = ?,
+        confidence = ?,
+        date_added = ?,
+        raw_json = ?
+    WHERE id = ?
+    """, (
+        merged["title"],
+        merged["source"],
+        merged["source_type"],
+        merged["document_type"],
+        merged["research_domain"],
+        json.dumps(merged["authors"], ensure_ascii=False),
+        merged["publication_year"],
+        merged["doi"],
+        merged["abstract"],
+        json.dumps(merged["keywords"], ensure_ascii=False),
+        merged["pdf_link"],
+        1 if merged["open_access"] else 0,
+        merged["local_file"],
+        merged["ai_summary"],
+        merged["status"],
+        merged["confidence"],
+        merged["date_added"],
+        json.dumps(merged, ensure_ascii=False),
+        record_id,
+    ))
+
+    conn.commit()
+    conn.close()
+
+
+def save_knowledge_object(obj, return_status: bool = False):
+    """
+    Insert or update one canonical Knowledge Object.
+
+    Identity priority:
     1. Normalized DOI
     2. Exact normalized title when DOI is unavailable
 
-    Returns the existing row ID for duplicates or the new row ID
-    for newly inserted records.
+    Lifecycle behavior:
+    - Insert a new canonical record when no match exists.
+    - Merge improved metadata into an existing canonical record.
+    - Advance lifecycle status without regression.
+    - Preserve the existing record ID.
+
+    Return status:
+    - inserted: a new row was created
+    - updated: an existing row received improved data
+    - existing: an identical or non-improving duplicate was received
     """
     data = obj.to_dict()
-
     normalized_doi = normalize_doi(data.get("doi"))
+    data["doi"] = normalized_doi
 
     if normalized_doi:
-        existing = find_by_doi(normalized_doi)
+        existing_match = find_by_doi(normalized_doi)
     else:
-        existing = find_by_title(data.get("title"))
+        existing_match = find_by_title(data.get("title"))
 
-    if existing:
-        return int(existing[0])
+    if existing_match:
+        existing_id = int(existing_match[0])
+        existing_record = get_knowledge_object_record(existing_id)
 
-    data["doi"] = normalized_doi
+        if existing_record is None:
+            raise RuntimeError(
+                f"Existing repository record {existing_id} could not be read."
+            )
+
+        merged = merge_knowledge_object_data(existing_record, data)
+
+        if records_differ(existing_record, merged):
+            update_knowledge_object(existing_id, merged)
+            repository_status = "updated"
+        else:
+            repository_status = "existing"
+
+        if return_status:
+            return {
+                "record_id": existing_id,
+                "status": repository_status,
+            }
+
+        return existing_id
 
     conn = connect()
     cursor = conn.cursor()
@@ -187,11 +473,11 @@ def save_knowledge_object(obj) -> int:
         data["source_type"],
         data["document_type"],
         data["research_domain"],
-        json.dumps(data["authors"]),
+        json.dumps(data["authors"], ensure_ascii=False),
         data["publication_year"],
         data["doi"],
         data["abstract"],
-        json.dumps(data["keywords"]),
+        json.dumps(data["keywords"], ensure_ascii=False),
         data["pdf_link"],
         1 if data["open_access"] else 0,
         data["local_file"],
@@ -205,6 +491,12 @@ def save_knowledge_object(obj) -> int:
     conn.commit()
     inserted_id = int(cursor.lastrowid)
     conn.close()
+
+    if return_status:
+        return {
+            "record_id": inserted_id,
+            "status": "inserted",
+        }
 
     return inserted_id
 
