@@ -153,3 +153,18 @@ Repository outcomes are explicitly reported as:
 - existing.
 
 Historical duplicate cleanup and database uniqueness enforcement reon work and are not yet part of the verified architecture.
+
+## Repository Integrity Enforcement
+
+The canonical repository is now protected by database-level integrity controls.
+
+Implemented:
+
+- canonical duplicate migration;
+- lifecycle-aware metadata consolidation;
+- deletion of redundant historical rows;
+- unique normalized DOI enforcement;
+- normalized title indexing;
+- pre- and post-migration SQLite integrity verification.
+
+The repository currently contains 1,137 canonical Knowledge Object records after migration.

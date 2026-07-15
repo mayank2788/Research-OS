@@ -41,3 +41,13 @@ Date: 13 July 2026
 | Repository Lifecycle Tests | Verified | 10 isolated automated repository tests passed |
 | Historical Duplicate Migration | Proposed | Controlled consolidation of legacy duplicate rows after backup and migration verification |
 | Database Uniqueness Enforcement | Proposed | Unique canonical identifiers to be enforced only after historical duplicate migration |
+
+## Repository Integrity Milestone
+
+| Module | Status | Notes |
+|---|---|---|
+| Canonical Repository Migration | Verified | 18 duplicate groups merged and 23 redundant rows removed |
+| Repository Backup Verification | Verified | Pre-migration SQLite backup created and integrity checked |
+| Normalized DOI Unique Index | Verified | Database prevents duplicate normalized DOI identities |
+| Normalized Title Index | Verified | Supports DOI-less title lookup and integrity checks |
+| Migration Tests | Verified | 15 migration and repository tests passed |

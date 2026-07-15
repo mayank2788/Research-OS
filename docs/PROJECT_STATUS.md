@@ -178,3 +178,27 @@ Verification:
 - Git diff validation passed.
 
 Historical duplicate rows remain pending controlled migration. Database-level uniqueness enforcement has not yet been applied.
+
+## Canonical Repository Migration and Integrity Enforcement
+
+Implemented and verified:
+
+- Historical duplicate audit and dry-run migration planning.
+- Verified SQLite backup before migration.
+- Canonical record selection using the oldest repository ID.
+- Metadata consolidation through the repository lifecycle merge engine.
+- Direct deletion of 23 redundant historical rows.
+- Consolidation of 18 duplicate identity groups.
+- Repository row count reduced from 1,160 to 1,137 canonical records.
+- Zero duplicate normalized DOI groups after migration.
+- Zero duplicate normalized-title groups among DOI-less records after migration.
+- Unique normalized DOI index created.
+- Normalized title lookup index created.
+- SQLite integrity verified before and after migration.
+
+Verification:
+
+- Migration and repository tests: 15 passed.
+- SQLite integrity check: passed.
+- Backup verified.
+- Final repository rows: 1,137.

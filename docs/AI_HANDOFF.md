@@ -176,3 +176,25 @@ Merge behaviour includes:
 `add_knowledge_object()` remains available for backward compatibility.
 
 Historical duplicate migration and database uniqueness constraints remain proposed and must be completed only after a verified backup and migration procedure.
+
+## Canonical Repository Migration Completed
+
+Historical repository duplicates have been migrated.
+
+Results:
+
+- rows before: 1,160;
+- duplicate groups merged: 18;
+- redundant rows deleted: 23;
+- canonical rows after: 1,137;
+- duplicate DOI groups after migration: 0;
+- duplicate DOI-less title groups after migration: 0.
+
+Database protection now includes:
+
+- a unique normalized DOI index;
+- a normalized title lookup index.
+
+A verified pre-migration backup was created locally under `data/backups/`.
+
+The migration code and tests are retained in `repository/migrations/` and `repository/tests/`.
